@@ -1,9 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './sass/index.scss'
+import React from 'react'
+import Router from './routes/'
 
-function App() {
-  <Router />
+export default function App() {
+  return <Router />
 }
-
-export default App

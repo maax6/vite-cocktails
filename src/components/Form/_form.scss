@@ -1,0 +1,16 @@
+.form {
+   display: flex;
+   padding: 30px;
+   border: solid blue 1px;
+   border-radius: 0px;
+   flex-direction: row;
+   gap: 20px;
+   &__btn {
+      background-color: rgb(98, 13, 109);
+      color: antiquewhite;
+      padding: 5px 10px;
+      border-radius: 5px;
+      -webkit-box-shadow: 5px 5px 15px 5px #000000;
+      box-shadow: 5px 5px 15px 5px #000000;
+   }
+}
