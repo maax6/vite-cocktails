@@ -3,11 +3,9 @@
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-   align-items: flex-end;
-   height: 43px;
+   align-items: center;
    font-size: 11px;
    @include media-query(small) {
-      height: 54px;
       font-size: 18px;
       margin: 25px 5%;
    }
@@ -19,23 +17,21 @@
    @include media-query(large) {
       margin: 40px 5%;
    }
-}
-.logo {
-   height: 90%;
-   @include media-query(small) {
-      height: 100%;
-   }
-   &__container {
-      height: 100%;
+   &__icon {
+      font-size: 80px;
+      &__span {
+         width: 100%;
+      }
    }
 }
+
 .nav {
    a {
-    text-decoration: none;
+      text-decoration: none;
    }
    &__bar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
    }
    &__link {
       margin-left: 22px;
@@ -53,8 +49,8 @@
       @include media-query(large) {
          margin-left: 57px;
       }
-      &--active {
-         text-decoration: underline;
-      }
+      // &--active {
+      //    text-decoration: underline;
+      // }
    }
 }

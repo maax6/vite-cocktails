@@ -1,10 +1,18 @@
 .form {
    display: flex;
    padding: 30px;
-   border: solid blue 1px;
+   border: solid rgb(210, 233, 212) 1px;
    border-radius: 0px;
-   flex-direction: row;
-   gap: 20px;
+   flex-direction: column;
+   gap: 50px;
+   &__label {
+      color: #b4886b;
+      font-weight: bold;
+      display: block;
+      width: 150px;
+      float: left;
+   }
+
    &__btn {
       background-color: rgb(98, 13, 109);
       color: antiquewhite;
