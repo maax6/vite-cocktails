@@ -34,20 +34,12 @@
       justify-content: center;
    }
    &__link {
-      margin-left: 22px;
-      text-align: right;
-      line-height: 34px;
-      color: #ff6060;
-      font-weight: 500;
-      align-items: flex-end;
+     
       @include max-media-query(small) {
-         text-transform: uppercase;
       }
       @include media-query(medium) {
-         margin-left: 40px;
       }
       @include media-query(large) {
-         margin-left: 57px;
       }
       // &--active {
       //    text-decoration: underline;
