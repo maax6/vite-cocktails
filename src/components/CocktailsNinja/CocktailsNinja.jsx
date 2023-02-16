@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Form = () => {
+export function CocktailsNinja() {
    const [cocktail, setCocktail] = useState('')
    const [cocktailData, setCocktailData] = useState([])
    const headers = {
@@ -36,7 +36,7 @@ const Form = () => {
    return (
       <>
          <form className="form" onSubmit={getCocktails}>
-            <label className='form__label' >search for a cocktail
+            <label className='form__label' >Mot clé :
             </label>
             <input
                className="form__searchBar"
@@ -50,7 +50,6 @@ const Form = () => {
             <ul className='cocktails'>
                {cocktailData.map((cocktail) => (
                   <li key={cocktail.name} className='coctail'>
-
                      <h3 className='cocktail__name'>{cocktail.name}</h3>
                      <p className='cocktail__method'>{cocktail.instructions}</p>
                      <ul className='cocktail__ingredients'>
@@ -66,4 +65,4 @@ const Form = () => {
    )
 }
 
-export default Form
+
