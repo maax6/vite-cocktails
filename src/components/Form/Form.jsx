@@ -47,14 +47,15 @@ const Form = () => {
             <input className="form__btn" type="submit" value="Chercher" />
          </form>
          {cocktailData.length > 0 ? (
-            <ul>
+            <ul className='cocktails'>
                {cocktailData.map((cocktail) => (
-                  <li key={cocktail.name}>
-                     <h3>{cocktail.name}</h3>
-                     <p>{cocktail.instructions}</p>
-                     <ul>
+                  <li key={cocktail.name} className='coctail'>
+
+                     <h3 className='cocktail__name'>{cocktail.name}</h3>
+                     <p className='cocktail__method'>{cocktail.instructions}</p>
+                     <ul className='cocktail__ingredients'>
                         {cocktail.ingredients.map((ingredient) => (
-                           <li key={ingredient}>{ingredient}</li>
+                           <li className='cocktail__ingredients__list' key={ingredient}>{ingredient}</li>
                         ))}
                      </ul>
                   </li>
