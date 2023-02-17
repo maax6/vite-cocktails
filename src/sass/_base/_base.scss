@@ -14,10 +14,12 @@ body {
 }
 
 #root {
+   width: 100%;
+   min-height: 100%;
    margin: 0 auto;
    display: flex;
    flex-direction: column;
    align-items: center;
-   min-height: 100%;
+   flex-grow: 1;
 }
 
