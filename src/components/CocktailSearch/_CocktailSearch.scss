@@ -67,6 +67,19 @@
    justify-content: center;
    flex-direction: row;
 }
+.cocktail-empty {
+   display: flex;
+   font-family: 'Nabla', cursive;
+   font-size: 100px;
+   text-align: center;
+   justify-content: center;
+   // background-image: url();
+}
+.cocktail-empty > h1 {
+   margin-top: -192px;
+
+   // background-image: url();
+}
 .cocktail-card {
    display: flex;
    flex-direction: column;
