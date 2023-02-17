@@ -13,7 +13,11 @@
    }
    &__searchBar {
       text-align: center;
-      height: 28px;
+      height: 40px;
+      color: #fff;
+      font-family: 'Unifont', sans-serif;
+      background-color: black;
+      font-size: 25px;
    }
    &__btn {
       display: inline-block;
