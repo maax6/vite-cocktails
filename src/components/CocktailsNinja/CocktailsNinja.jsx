@@ -49,7 +49,7 @@ export function CocktailsNinja() {
          {cocktailData.length > 0 ? (
             <ul className='cocktails'>
                {cocktailData.map((cocktail) => (
-                  <li key={cocktail.name} className='coctail'>
+                  <li key={cocktail.name} className='cocktail'>
                      <h3 className='cocktail__name'>Name: {cocktail.name.charAt(0).toUpperCase()+cocktail.name.slice(1).toLowerCase()}</h3>
                      <p className='cocktail__method'>Method: {cocktail.instructions}</p>
                      <ul className='cocktail__ingredients'>Ingredients

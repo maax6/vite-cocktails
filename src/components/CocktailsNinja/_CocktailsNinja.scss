@@ -1,8 +1,7 @@
 .form {
-
    display: flex;
    padding: 30px;
-   border: solid rgb(209, 53, 53) 1px;
+   border: solid rgb(104, 96, 96) 1px;
    border-radius: 0px;
    flex-direction: column;
    gap: 50px;
@@ -16,7 +15,7 @@
       padding: 5px 10px;
       border-radius: 5px;
       -webkit-box-shadow: 5px 5px 15px 5px #000000;
-      box-shadow: 5px 5px 15px 5px #000000;
+      box-shadow: 5px 5px 15px 5px #970f0f;
    }
 }
 .cocktails{
@@ -25,5 +24,6 @@
    gap: 20px;
 }
 .cocktail{
-   list-style-type: none;
+ background-color: #2d3436;
+border-radius: 5px;
 }
