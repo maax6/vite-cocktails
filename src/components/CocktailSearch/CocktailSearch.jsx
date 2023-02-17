@@ -35,17 +35,6 @@ export function CocktailSearch() {
 
    return (
       <>
-         <form className="form" onSubmit={getCocktails}>
-            <label className='form__label' >Search For A Cocktail  :
-            </label>
-            <input
-               className="form__searchBar"
-               type="search"
-               value={cocktail}
-               onChange={(e) => setCocktail(e.target.value)}
-            />
-            <input className="form__btn" type="submit" value="Find" />
-         </form>
          {cocktailData.length > 0 ? (
             <div className='cocktail-cards'>
                {cocktailData.map((cocktail) => (
@@ -63,6 +52,17 @@ export function CocktailSearch() {
          ) : (<div className='cocktail-empty'>
          <h1>  <br /> Cocktail <br /> Search<br />  App </h1>
       </div> )}
+         <form className="form" onSubmit={getCocktails}>
+            <label className='form__label' >Search For A Cocktail  :
+            </label>
+            <input
+               className="form__searchBar"
+               type="search"
+               value={cocktail}
+               onChange={(e) => setCocktail(e.target.value)}
+            />
+            <input className="form__btn" type="submit" value="Find" />
+         </form>
       </>
    )
   }
