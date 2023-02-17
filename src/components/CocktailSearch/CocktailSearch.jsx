@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
-export function CocktailsNinja() {
+export function CocktailSearch() {
    const [cocktail, setCocktail] = useState('')
    const [cocktailData, setCocktailData] = useState([])
    const headers = {
@@ -36,7 +36,7 @@ export function CocktailsNinja() {
    return (
       <>
          <form className="form" onSubmit={getCocktails}>
-            <label className='form__label' >Mot clé :
+            <label className='form__label' >Keyword  :
             </label>
             <input
                className="form__searchBar"
@@ -44,23 +44,23 @@ export function CocktailsNinja() {
                value={cocktail}
                onChange={(e) => setCocktail(e.target.value)}
             />
-            <input className="form__btn" type="submit" value="Chercher" />
+            <input className="form__btn" type="submit" value="Find" />
          </form>
          {cocktailData.length > 0 ? (
-            <ul className='cocktails'>
+            <div className='cocktail-cards'>
                {cocktailData.map((cocktail) => (
-                  <li key={cocktail.name} className='cocktail'>
-                     <h3 className='cocktail__name'>Name: {cocktail.name.charAt(0).toUpperCase()+cocktail.name.slice(1).toLowerCase()}</h3>
-                     <p className='cocktail__method'>Method: {cocktail.instructions}</p>
-                     <ul className='cocktail__ingredients'>Ingredients
+                  <div key={cocktail.name} className='cocktail-card'>
+                     <h3 className='cocktail-card__name'> {cocktail.name.charAt(0).toUpperCase()+cocktail.name.slice(1).toLowerCase()}</h3>
+                     <p className='cocktail-card__method'> {cocktail.instructions}</p>
+                     <div className='cocktail-card__ingredients'>
                         {cocktail.ingredients.map((ingredient) => (
-                           <li className='cocktail__ingredients__item' key={ingredient}>{ingredient}</li>
+                           <span className='cocktail-card__ingredients__item' key={ingredient}>{ingredient}</span>
                         ))}
-                     </ul>
-                  </li>
+                     </div>
+                  </div>
                ))}
-            </ul>
+            </div>
          ) : null}
       </>
    )
-}
+  }
