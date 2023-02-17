@@ -1,8 +1,8 @@
-import { CocktailsNinja } from '../../components/CocktailsNinja/CocktailsNinja'
+import { CocktailSearch } from '../../components/CocktailSearch/CocktailSearch'
 export function Home () {
    return (
       <div className="home">
-         <CocktailsNinja />
+         <CocktailSearch />
       </div>
    )
 }
