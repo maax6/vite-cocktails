@@ -1,16 +1,17 @@
 html,
 body {
    height: 100%;
-   background-color: #f5f5f5;
+   color: rgb(117, 121, 121);
+   background-color: #000000;
 }
 body li{
    list-style-type: none;
 }
 body {
+   height: 100vh;
    display: flex;
-   color: #a79999;
    min-width: 100%;
-   font-family: Arial, Helvetica, sans-serif;
+   font-family: "Unifont", sans-serif;
 }
 
 #root {
