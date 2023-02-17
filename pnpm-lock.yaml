@@ -1,6 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fontsource/smooch-sans': ^4.5.9
+  '@fontsource/sora': ^4.5.12
+  '@fontsource/unifont': ^4.5.5
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@vitejs/plugin-react': ^3.1.0
@@ -13,6 +16,9 @@ specifiers:
   vite: ^4.1.0
 
 dependencies:
+  '@fontsource/smooch-sans': 4.5.9
+  '@fontsource/sora': 4.5.12
+  '@fontsource/unifont': 4.5.5
   prettier: 2.8.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -452,6 +458,18 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fontsource/smooch-sans/4.5.9:
+    resolution: {integrity: sha512-ScdcjBPq3HePxWi1l5VS9G5XLnOY0U84v9ChRI5oVoBegGe+g89PjWeHgKtUWoB82VxCjq+b+FeTM2/CzcAzsw==}
+    dev: false
+
+  /@fontsource/sora/4.5.12:
+    resolution: {integrity: sha512-7pWwrWIKcLH0pvKCSssb96KFFKwt5+eKHC4yHfFYtxapQ6Ax+/Rj02QHnIkXyy5nc5cOvyOAQM2MAIGlMtoj9w==}
+    dev: false
+
+  /@fontsource/unifont/4.5.5:
+    resolution: {integrity: sha512-HXMFChbXX146dftuH1caamdwBBbPKyhNGr1cnh9dQ3Sq3+23vTpxRZCndVa0rkMbkuPpHCb4Flmx7V8p+ZslLg==}
+    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
