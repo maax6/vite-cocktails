@@ -10,4 +10,4 @@ $ pnpm install
 That's all
 $ pnpm run dev 
 Visit localhost port 5173.
-🍸🍹🍺🍻 Get your recipes 🥂🥃🍾🍷🥤
+🍸🍹🍺🍻 Get your recipes 🥂🥃🍾🍷🥤 

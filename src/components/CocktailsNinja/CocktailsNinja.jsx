@@ -50,11 +50,11 @@ export function CocktailsNinja() {
             <ul className='cocktails'>
                {cocktailData.map((cocktail) => (
                   <li key={cocktail.name} className='coctail'>
-                     <h3 className='cocktail__name'>{cocktail.name}</h3>
-                     <p className='cocktail__method'>{cocktail.instructions}</p>
-                     <ul className='cocktail__ingredients'>
+                     <h3 className='cocktail__name'>Name: {cocktail.name.charAt(0).toUpperCase()+cocktail.name.slice(1).toLowerCase()}</h3>
+                     <p className='cocktail__method'>Method: {cocktail.instructions}</p>
+                     <ul className='cocktail__ingredients'>Ingredients
                         {cocktail.ingredients.map((ingredient) => (
-                           <li className='cocktail__ingredients__list' key={ingredient}>{ingredient}</li>
+                           <li className='cocktail__ingredients__item' key={ingredient}>{ingredient}</li>
                         ))}
                      </ul>
                   </li>
@@ -64,5 +64,3 @@ export function CocktailsNinja() {
       </>
    )
 }
-
-
