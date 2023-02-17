@@ -36,7 +36,7 @@
       &:hover {
          box-shadow: 12px 12px 6px #ea2020, -12px -12px 6px #0c2461;
          transition: box-shadow 0.5s;
-         zoom: 1.1;
+         zoom: 1.5;
       }
    }
 }
@@ -69,14 +69,14 @@
 }
 .cocktail-empty {
    display: flex;
-   font-family: 'Nabla', cursive;
-   font-size: 100px;
+   font-family: 'Nabla','Roboto',Arial, Helvetica, sans-serif;
+   color: gold;
+   font-size: 50px;
    text-align: center;
    justify-content: center;
    // background-image: url();
 }
 .cocktail-empty > h1 {
-   margin-top: -192px;
    z-index: 1
 
    // background-image: url();

@@ -4,7 +4,7 @@ body {
    color: rgb(117, 121, 121);
    background-color: #000000;
 }
-body li{
+body li {
    list-style-type: none;
 }
 body {
@@ -12,7 +12,7 @@ body {
    display: flex;
    flex-grow: 1;
    min-width: 100%;
-   font-family: "Unifont", sans-serif;
+   font-family: 'Unifont', 'Roboto', sans-serif;
 }
 
 #root {
@@ -24,4 +24,3 @@ body {
    align-items: center;
    flex-grow: 1;
 }
-
