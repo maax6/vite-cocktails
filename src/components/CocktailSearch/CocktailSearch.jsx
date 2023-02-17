@@ -36,7 +36,7 @@ export function CocktailSearch() {
    return (
       <>
          <form className="form" onSubmit={getCocktails}>
-            <label className='form__label' >Keyword  :
+            <label className='form__label' >Search For A Cocktail  :
             </label>
             <input
                className="form__searchBar"
@@ -60,7 +60,9 @@ export function CocktailSearch() {
                   </div>
                ))}
             </div>
-         ) : null}
+         ) : (<div className='cocktail-empty'>
+         <h1>  <br /> Cocktail <br /> Search<br />  App </h1>
+      </div> )}
       </>
    )
   }
