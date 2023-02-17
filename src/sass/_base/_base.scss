@@ -10,6 +10,7 @@ body li{
 body {
    height: 100vh;
    display: flex;
+   flex-grow: 1;
    min-width: 100%;
    font-family: "Unifont", sans-serif;
 }
