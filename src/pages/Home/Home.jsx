@@ -1,8 +1,9 @@
-import Form from "../../components/Form/Form"
-export default function Home() {
+import { CocktailSearch } from '../../components/CocktailSearch/CocktailSearch'
+export function Home () {
    return (
       <div className="home">
-            <Form />
+         <CocktailSearch />
       </div>
    )
 }
+

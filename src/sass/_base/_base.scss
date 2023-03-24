@@ -1,17 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-html {
-   font-family: Roboto;
+html,
+body {
+   height: 100%;
+   color: rgb(117, 121, 121);
+   background-color: #000000;
 }
+body li {
+   list-style-type: none;
+}
+body {
+   height: 100vh;
+   display: flex;
+   flex-grow: 1;
+   min-width: 100%;
+   font-family: 'Unifont', 'Roboto', sans-serif;
+}
+
 #root {
-   max-width: 1440px;
-   min-width: 306px;
-   margin: auto;
+   width: 100%;
+   min-height: 100%;
+   margin: 0 auto;
    display: flex;
    flex-direction: column;
-   
+   align-items: center;
+   flex-grow: 1;
 }
-body{
-background: #333333;
-}
-	
