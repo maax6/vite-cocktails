@@ -1,6 +1,9 @@
-import React from 'react'
-import Router from './routes/'
+import { Home } from './pages/Home/Home'
 
 export default function App() {
-  return <Router />
+   return (
+      <>
+         <Home />
+      </>
+   )
 }
