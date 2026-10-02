@@ -56,3 +56,7 @@ Si vous ajoutez `scripts/export-notion-recipes.mjs`, transmettez le secret uniqu
 Le plugin [vite-plugin-pwa](https://vite-pwa-org.netlify.app/guide/static-assets.html) génère le manifeste et le service worker, avec précache de `recipes.json`, `ski-guide.json`, HTML, JS, CSS, icônes et polices locales. Après une première visite en ligne et la fin de l’installation du service worker, **Cocktail Classique Maxime et Semaine ski fonctionnent hors ligne**, y compris les courses et le guide débutants. Aucune requête TheCocktailDB n’est mise en cache ; l’API est exclusivement en ligne.
 
 Testez le hors ligne avec `pnpm build` puis `pnpm preview` sur localhost (ou en production HTTPS), pas avec le serveur dev. Ouvrez la page en ligne, attendez le service worker actif, rechargez, puis passez hors ligne et rechargez encore. Le navigateur propose l’installation PWA selon son support ; sur iOS, utilisez « Ajouter à l’écran d’accueil ». Les recettes mises à jour sont incluses au prochain build et renouvelées avec le service worker.
+
+## Candidats photo
+
+`node scripts/match-cocktail-photos.mjs` génère `public/photo-candidates.json` à partir de TheCocktailDB, sans activer les images sur les cartes locales. L’accueil reste sur API jusqu’à validation des photos des classiques. Les statuts `exact` et `fuzzy` indiquent une correspondance de nom, pas une autorisation d’utilisation. Consultez les [options et vérifications des droits photo](docs/photo-rights.md) avant de brancher les images et de changer l’onglet par défaut.
