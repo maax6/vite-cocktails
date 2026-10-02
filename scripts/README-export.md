@@ -4,7 +4,7 @@
 
 -  Classiques → `source: "maison"`.
 -  Martini → `source: "maison"`, `tags: ["martini"]`.
--  Ski → `source: "maison"`, `season: "ski"` (exclu de Maison).
+-  Ski → `source: "maison"`, `season: "ski"` (exclu de Cocktail Classique Maxime).
 
 Réexportez les bases Notion en conservant les propriétés attendues par le script, puis lancez le builder, `pnpm test` et `pnpm build`. Le builder valide le schéma et les identifiants avant d’écrire ; un export invalide laisse le catalogue précédent intact. Les identifiants proviennent des URL ou ID des pages pour garder les favoris stables. Sans ces propriétés, un ID déterministe dépend de la collection et du nom de la recette ; renommer cette recette change donc son ID. Le lecteur accepte l’enveloppe `{ recipes, exportedAt }` ainsi qu’un tableau brut.
 
