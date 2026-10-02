@@ -1307,7 +1307,7 @@
       "ingredients": [
         "2 oz Gin",
         "Vodka (optional, instead of gin)",
-        "Few drops oz Vermouth Sec",
+        { "name": "Vermouth Sec", "amount": "Few drops" },
         "Olive or lemon zest (garnish)"
       ],
       "method": "Stirred. Classic and dry.",
