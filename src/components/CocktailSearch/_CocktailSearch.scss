@@ -120,3 +120,11 @@
       flex-direction: column;
    }
 }
+
+.cocktail-card__image {
+   width: 100%;
+   max-width: 220px;
+   border-radius: 12px;
+   object-fit: cover;
+   aspect-ratio: 1;
+}
