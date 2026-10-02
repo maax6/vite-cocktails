@@ -1,7 +1,7 @@
 export function Card({ children, className = '', ...props }) {
   return (
     <article
-      className={`group glass-panel overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-glow ${className}`}
+      className={`group glass-panel overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow ${className}`}
       {...props}
     >
       {children}
@@ -19,7 +19,8 @@ export function CardMedia({ src, alt, className = '' }) {
         loading="lazy"
         className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas via-transparent to-transparent opacity-80" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas via-canvas/20 to-transparent opacity-90" />
+      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-accent/15" />
     </div>
   )
 }

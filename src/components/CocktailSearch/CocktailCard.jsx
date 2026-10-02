@@ -26,7 +26,7 @@ export function CocktailCard({ cocktail, style }) {
         ) : null}
 
         {instructions ? (
-          <p className="mt-auto text-sm leading-relaxed text-ink-muted line-clamp-5">
+          <p className="mt-auto text-sm leading-relaxed text-ink-muted/95 line-clamp-5">
             {instructions}
           </p>
         ) : null}
