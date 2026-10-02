@@ -1,6 +1,6 @@
 # Cocktails Maison · Speakeasy
 
-Vite + React 18 + Tailwind. Carnet local, recherche automatique (350 ms), cartes ambre/laiton, sans bouton de recherche.
+Vite + React 18 + Tailwind. Node.js 20 minimum (dépendances PWA). Carnet local, recherche automatique (350 ms), cartes ambre/laiton, sans bouton de recherche.
 
 ```bash
 pnpm install
@@ -18,7 +18,7 @@ pnpm test
 - Filtres locaux spiritueux et verre ; « J’ai… » propose les ingrédients du pool Maison hors ski. Une recette doit contenir **tous** les ingrédients cochés, avec correspondance partielle insensible à la casse et aux accents. Ces ingrédients peuvent aussi filtrer le ski.
 - Fiche directement visible sur chaque carte : doses en gros, méthode complète, verre, garniture. Les mesures API sont affichées telles quelles (aucune conversion approximative en oz).
 - **Au hasard** : pool Maison hors ski, même dans l’onglet API ; pool ski en mode ski. Respecte les filtres du bar et le mode favoris, sans restriction par nom. « Voir les résultats » quitte la suggestion.
-- **Favoris** : cœur sur chaque carte, enregistré dans `localStorage` (`speakeasy:favorites:v1`). Le bouton Favoris filtre le catalogue courant. Dans API, les recettes enregistrées se consultent sans nouvelle recherche ; elles nécessitent une connexion comme le reste de l’onglet API.
+- **Favoris** : cœur sur chaque carte, enregistré dans `localStorage` (`speakeasy:favorites:v1`). Le bouton Favoris filtre le catalogue courant. Dans API, les recettes enregistrées se consultent sans requête réseau ; elles nécessitent une connexion comme le reste de l’onglet API. Les entrées invalides du stockage sont ignorées sans perdre les autres favoris.
 
 ## Catalogue / export
 
@@ -43,7 +43,7 @@ pnpm test
 ]
 ```
 
-`ingredients` accepte aussi `string[]` : les doses initiales explicites (oz, ml, cl…) sont séparées pour l’affichage ; les autres chaînes sont conservées intégralement. Préférez `{name, amount}[]` pour lever toute ambiguïté. Saisissez les doses maison en oz (`1 oz ≈ 29.57 ml`) ; les chaînes ne sont pas converties automatiquement. `method`, `glass`, `garnish`, `spirit` sont des chaînes (vides si inconnues). `season` est optionnel et n’accepte que `"ski"`.
+`ingredients` accepte aussi `string[]` : les quantités initiales (nombres, fractions), avec ou sans unité (oz, ml, cl…), sont séparées pour l’affichage ; les autres chaînes sont conservées intégralement. Préférez `{name, amount}[]` pour lever toute ambiguïté, notamment pour les mesures textuelles comme `Few drops`. Saisissez les doses maison en oz (`1 oz ≈ 29.57 ml`) ; les chaînes ne sont pas converties automatiquement. `method`, `glass`, `garnish`, `spirit` sont des chaînes (vides si inconnues). `season` est optionnel et n’accepte que `"ski"`.
 
 Le schéma accepte `source: "maison" | "martini" | "ski" | "api"` pour compatibilité. Pour un nouvel export, **classiques et Martini utilisent `source: "maison"`** (`tags: ["martini"]` optionnel) ; le ski utilise également `source: "maison"` avec **`season: "ski"`**. Le classement ski dépend de `season`, jamais du nom ni d’un tag. Le legacy `source: "ski"` exige donc aussi `season: "ski"`.
 
