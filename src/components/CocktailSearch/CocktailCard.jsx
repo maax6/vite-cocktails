@@ -8,11 +8,11 @@ export function CocktailCard({ cocktail, favorite, onFavorite, style }) {
    const { name, method, ingredients, image, glass, garnish, source, season } =
       cocktail
    return (
-      <Card className="flex flex-col animate-fade-up" style={style}>
+      <Card className="flex min-w-0 flex-col animate-fade-up" style={style}>
          <CardMedia src={image} alt={name} />
          <CardBody>
             <div className="flex items-start justify-between gap-2">
-               <div>
+               <div className="min-w-0">
                   <Badge>
                      {source === 'api'
                         ? 'TheCocktailDB'
@@ -26,7 +26,7 @@ export function CocktailCard({ cocktail, favorite, onFavorite, style }) {
                </div>
                <Button
                   variant="ghost"
-                  className="px-3"
+                  className="shrink-0 px-3"
                   onClick={() => onFavorite(cocktail)}
                   aria-pressed={favorite}
                   aria-label={`${favorite ? 'Retirer' : 'Ajouter'} ${name} ${
@@ -45,13 +45,13 @@ export function CocktailCard({ cocktail, favorite, onFavorite, style }) {
                   return (
                      <li
                         key={index}
-                        className="flex items-baseline justify-between gap-4 border-b border-accent/10 pb-2"
+                        className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-accent/10 pb-2"
                      >
-                        <span className="min-w-0 break-words text-sm text-ink-muted">
+                        <span className="min-w-0 flex-1 basis-24 break-words text-sm text-ink-muted">
                            {item.name}
                         </span>
                         {item.amount && (
-                           <strong className="max-w-[55%] shrink-0 text-right text-2xl font-semibold tabular-nums text-accent-soft">
+                           <strong className="ml-auto max-w-full break-words text-right text-2xl font-semibold tabular-nums text-accent-soft">
                               {item.amount}
                            </strong>
                         )}
@@ -59,7 +59,7 @@ export function CocktailCard({ cocktail, favorite, onFavorite, style }) {
                   )
                })}
             </ul>
-            <p className="whitespace-pre-line text-sm leading-relaxed text-ink-muted">
+            <p className="whitespace-pre-line break-words text-sm leading-relaxed text-ink-muted">
                {method || 'Méthode non renseignée.'}
             </p>
             <dl className="mt-auto grid grid-cols-2 gap-3 pt-4 text-sm">

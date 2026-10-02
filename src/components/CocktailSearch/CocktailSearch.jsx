@@ -24,12 +24,17 @@ function readFavorites() {
    try {
       const stored = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]')
       if (!Array.isArray(stored)) return []
+      const valid = stored.filter((recipe) => {
+         try {
+            validateRecipes([recipe])
+            return true
+         } catch {
+            return false
+         }
+      })
       return [
          ...new Map(
-            stored.map((recipe) => {
-               validateRecipes([recipe])
-               return [recipeKey(recipe), recipe]
-            })
+            valid.map((recipe) => [recipeKey(recipe), recipe])
          ).values(),
       ]
    } catch {
@@ -69,11 +74,13 @@ export function CocktailSearch() {
             return response.json()
          })
          .then(validateRecipes)
-         .then(setRecipes)
-         .catch((error) => {
-            if (error.name !== 'AbortError')
+         .then((data) => {
+            if (!controller.signal.aborted) setRecipes(data)
+         })
+         .catch(() => {
+            if (!controller.signal.aborted)
                setLocalError(
-                  'Impossible de charger recipes.json. Vérifiez le catalogue puis réessayez.'
+                  'Impossible de charger le carnet. Vérifiez votre connexion puis réessayez.'
                )
          })
          .finally(() => {
@@ -103,7 +110,13 @@ export function CocktailSearch() {
       setApiError('')
       setApiLoading(false)
       // Immediately cancel old results while a new query is being debounced.
-      if (tab !== 'api' || !online || !debounced.trim() || query !== debounced)
+      if (
+         tab !== 'api' ||
+         !online ||
+         favoritesOnly ||
+         !debounced.trim() ||
+         query !== debounced
+      )
          return
       setApiLoading(true)
       fetch(
@@ -120,8 +133,8 @@ export function CocktailSearch() {
             if (!controller.signal.aborted)
                setApiData((data.drinks || []).map(mapDrink))
          })
-         .catch((error) => {
-            if (error.name !== 'AbortError')
+         .catch(() => {
+            if (!controller.signal.aborted)
                setApiError(
                   'TheCocktailDB est indisponible. Réessayez ou consultez Maison.'
                )
@@ -130,7 +143,7 @@ export function CocktailSearch() {
             if (!controller.signal.aborted) setApiLoading(false)
          })
       return () => controller.abort()
-   }, [tab, online, debounced, query, reload])
+   }, [tab, online, favoritesOnly, debounced, query, reload])
 
    useEffect(() => {
       setRandom(null)
@@ -171,11 +184,31 @@ export function CocktailSearch() {
    const randomPool = filterRecipes(pool, { spirit, glass, available }).filter(
       (recipe) => !favoritesOnly || favoriteKeys.has(recipeKey(recipe))
    )
-   const visible = random ? [random] : results
+   const suggestion =
+      random &&
+      randomPool.find((recipe) => recipeKey(recipe) === recipeKey(random))
+   const visible = suggestion ? [suggestion] : results
    const loading =
-      tab === 'api'
-         ? apiLoading || (online && query !== debounced)
-         : localLoading
+      !suggestion &&
+      (tab === 'api'
+         ? online && !favoritesOnly && (apiLoading || query !== debounced)
+         : localLoading)
+   const error = suggestion ? '' : tab === 'api' ? apiError : localError
+   const emptyTitle = favoritesOnly
+      ? 'Aucun favori à servir'
+      : tab === 'api' && online && !debounced.trim()
+      ? 'Ouvrez le carnet du monde'
+      : 'Aucune recette à servir'
+   const emptyMessage =
+      tab === 'api' && !online
+         ? 'Choisissez Maison ou Semaine ski pour consulter le carnet hors ligne.'
+         : favoritesOnly
+         ? 'Ajoutez des favoris avec le cœur des recettes, ou modifiez la recherche et les filtres.'
+         : tab === 'api'
+         ? debounced.trim()
+            ? 'Aucun cocktail trouvé pour ce nom. Essayez un autre nom.'
+            : 'Tapez un nom pour chercher dans TheCocktailDB.'
+         : 'Modifiez la recherche ou les filtres du bar.'
 
    const changeTab = (next) => {
       setTab(next)
@@ -254,11 +287,12 @@ export function CocktailSearch() {
                   placeholder="Tapez un nom… Negroni, Martini"
                   className="pl-11"
                   autoComplete="off"
+                  aria-busy={loading}
                   disabled={tab === 'api' && !online}
                />
             </div>
             <p className="mt-2 text-center text-xs text-ink-faint">
-               Recherche automatique · 350 ms
+               Recherche automatique par nom
             </p>
          </div>
 
@@ -358,7 +392,7 @@ export function CocktailSearch() {
                <FiHeart aria-hidden />
                Favoris ({favorites.length})
             </Button>
-            {random && (
+            {suggestion && (
                <Button variant="ghost" onClick={() => setRandom(null)}>
                   Voir les résultats
                </Button>
@@ -369,9 +403,9 @@ export function CocktailSearch() {
                {storageError}
             </p>
          )}
-         {(tab === 'api' ? apiError : localError) && (
+         {error && (
             <div role="alert" className="text-center text-accent-soft">
-               <p>{tab === 'api' ? apiError : localError}</p>
+               <p>{error}</p>
                <Button variant="ghost" onClick={() => setReload(reload + 1)}>
                   Réessayer
                </Button>
@@ -384,7 +418,7 @@ export function CocktailSearch() {
          >
             {loading
                ? 'Le bar prépare les recettes…'
-               : random
+               : suggestion
                ? 'La suggestion du bar'
                : `${visible.length} recette${visible.length === 1 ? '' : 's'}`}
          </p>
@@ -400,20 +434,11 @@ export function CocktailSearch() {
                ))}
             </div>
          ) : (
-            !loading && (
+            !loading &&
+            !error && (
                <div className="speakeasy-empty mx-auto w-full max-w-lg">
-                  <h2 className="font-display text-2xl">
-                     {tab === 'api' && !debounced.trim()
-                        ? 'Ouvrez le carnet du monde'
-                        : 'Aucune recette à servir'}
-                  </h2>
-                  <p className="mt-3 text-sm text-ink-muted">
-                     {tab === 'api'
-                        ? online
-                           ? 'Tapez un nom pour chercher dans TheCocktailDB.'
-                           : 'Choisissez Maison ou Semaine ski pour consulter le carnet hors ligne.'
-                        : 'Modifiez la recherche, les filtres ou ajoutez des favoris dans ce catalogue.'}
-                  </p>
+                  <h2 className="font-display text-2xl">{emptyTitle}</h2>
+                  <p className="mt-3 text-sm text-ink-muted">{emptyMessage}</p>
                </div>
             )
          )}
