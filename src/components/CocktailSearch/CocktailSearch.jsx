@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { FiSearch, FiLoader } from 'react-icons/fi'
+import { Button } from '../ui/Button'
+import { Input } from '../ui/Input'
+import { CocktailCard } from './CocktailCard'
 
 const COCKTAIL_DB_SEARCH =
    'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
@@ -25,11 +29,18 @@ function mapDrink(drink) {
 export function CocktailSearch() {
    const [cocktail, setCocktail] = useState('')
    const [cocktailData, setCocktailData] = useState([])
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState('')
+   const [hasSearched, setHasSearched] = useState(false)
 
    const getCocktails = async (e) => {
       e.preventDefault()
       const query = cocktail.trim()
       if (!query) return
+
+      setLoading(true)
+      setError('')
+      setHasSearched(true)
 
       try {
          const response = await fetch(
@@ -44,69 +55,127 @@ export function CocktailSearch() {
          const data = await response.json()
          const drinks = data.drinks
          if (!drinks || drinks.length === 0) {
-            alert(
-               "Aucun cocktail trouvé pour ces termes de recherche. Veuillez réessayer avec d'autres termes."
+            setError(
+               "Aucun cocktail trouvé pour ces termes. Essayez un autre nom."
             )
             setCocktailData([])
          } else {
             setCocktailData(drinks.map(mapDrink))
          }
-      } catch (error) {
-         console.error(error)
+      } catch (err) {
+         console.error(err)
+         setError('Une erreur est survenue. Réessayez dans un instant.')
+         setCocktailData([])
+      } finally {
+         setLoading(false)
       }
    }
 
    return (
-      <>
-         {cocktailData.length > 0 ? (
-            <div className="cocktail-cards">
-               {cocktailData.map((item) => (
-                  <div key={item.id} className="cocktail-card">
-                     {item.image ? (
-                        <img
-                           className="cocktail-card__image"
-                           src={item.image}
-                           alt={item.name}
-                           loading="lazy"
-                        />
-                     ) : null}
-                     <h3 className="cocktail-card__name">
-                        {item.name.charAt(0).toUpperCase() +
-                           item.name.slice(1).toLowerCase()}
-                     </h3>
-                     <p className="cocktail-card__method">{item.instructions}</p>
-                     <div className="cocktail-card__ingredients">
-                        {item.ingredients.map((ingredient) => (
-                           <span
-                              className="cocktail-card__ingredients__item"
-                              key={ingredient}
-                           >
-                              {ingredient}
-                           </span>
-                        ))}
-                     </div>
-                  </div>
+      <div className="flex w-full flex-col gap-10">
+         <header className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
+            <p className="rounded-full border border-glass-border bg-glass-fill px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-accent">
+               TheCocktailDB
+            </p>
+            <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl md:text-6xl">
+               Cocktail{' '}
+               <span className="bg-gradient-to-r from-accent to-accent-soft bg-clip-text text-transparent">
+                  Search
+               </span>
+            </h1>
+            <p className="max-w-md text-base text-ink-muted sm:text-lg">
+               Trouvez recettes, ingrédients et instructions — UI glass à la
+               21st.dev.
+            </p>
+         </header>
+
+         <form
+            className="mx-auto flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-stretch"
+            onSubmit={getCocktails}
+            role="search"
+         >
+            <label htmlFor="cocktail-query" className="sr-only">
+               Search for a cocktail
+            </label>
+            <div className="relative flex-1">
+               <FiSearch
+                  className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-faint"
+                  aria-hidden
+               />
+               <Input
+                  id="cocktail-query"
+                  type="search"
+                  value={cocktail}
+                  onChange={(e) => setCocktail(e.target.value)}
+                  placeholder="Margarita, Mojito, Negroni…"
+                  className="pl-10"
+                  autoComplete="off"
+                  disabled={loading}
+               />
+            </div>
+            <Button type="submit" disabled={loading || !cocktail.trim()}>
+               {loading ? (
+                  <>
+                     <FiLoader className="h-4 w-4 animate-spin" aria-hidden />
+                     Recherche…
+                  </>
+               ) : (
+                  <>
+                     <FiSearch className="h-4 w-4" aria-hidden />
+                     Find
+                  </>
+               )}
+            </Button>
+         </form>
+
+         {error ? (
+            <div
+               role="status"
+               className="mx-auto max-w-md rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-sm text-red-200"
+            >
+               {error}
+            </div>
+         ) : null}
+
+         {loading ? (
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+               {[0, 1, 2].map((i) => (
+                  <div
+                     key={i}
+                     className="glass-panel h-80 animate-pulse-soft"
+                     style={{ animationDelay: `${i * 120}ms` }}
+                  />
                ))}
             </div>
-         ) : (
-            <div className="cocktail-empty">
-               <h1>
-                  {' '}
-                  <br /> Cocktail <br /> Search
-                  <br /> App{' '}
-               </h1>
+         ) : null}
+
+         {!loading && cocktailData.length > 0 ? (
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+               {cocktailData.map((item, index) => (
+                  <CocktailCard
+                     key={item.id}
+                     cocktail={item}
+                     style={{ animationDelay: `${Math.min(index, 8) * 60}ms` }}
+                  />
+               ))}
             </div>
-         )}
-         <form className="form" onSubmit={getCocktails}>
-            <label className="form__label">Search For A Cocktail :</label>
-            <input
-               className="form__searchBar"
-               type="search"
-               value={cocktail}
-               onChange={(e) => setCocktail(e.target.value)}
-            />
-            <input className="form__btn" type="submit" value="Find" />
-         </form>
-      </>
+         ) : null}
+
+         {!loading && hasSearched && cocktailData.length === 0 && !error ? (
+            <p className="text-center text-ink-muted">Aucun résultat.</p>
+         ) : null}
+
+         {!loading && !hasSearched ? (
+            <div className="mx-auto flex max-w-sm flex-col items-center gap-3 rounded-2xl border border-dashed border-glass-border bg-glass-fill/50 px-6 py-10 text-center">
+               <span className="text-3xl" aria-hidden>
+                  🍸
+               </span>
+               <p className="text-sm text-ink-muted">
+                  Lancez une recherche pour afficher des cartes cocktail —
+                  image, nom, ingrédients et instructions.
+               </p>
+            </div>
+         ) : null}
+      </div>
    )
 }
