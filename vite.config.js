@@ -7,7 +7,12 @@ export default defineConfig({
       react(),
       VitePWA({
          registerType: 'autoUpdate',
-         includeAssets: ['recipes.json', 'favicon.ico', 'apple-touch-icon.png'],
+         includeAssets: [
+            'recipes.json',
+            'ski-guide.json',
+            'favicon.ico',
+            'apple-touch-icon.png',
+         ],
          manifest: {
             name: 'Le bar de Maxime · Speakeasy',
             short_name: 'Cocktails',
@@ -35,6 +40,7 @@ export default defineConfig({
             globPatterns: [
                '**/*.{js,css,html,png,ico,svg,webp,woff,woff2}',
                'recipes.json',
+               'ski-guide.json',
             ],
             cleanupOutdatedCaches: true,
             runtimeCaching: [
