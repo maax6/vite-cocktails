@@ -1,0 +1,1433 @@
+{
+  "recipes": [
+    {
+      "id": "181ce4c0757d81008b20d415e3f45bbc",
+      "name": "Mezcal Old Fashioned",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Mezcal rail",
+        "0.25 oz Fernet Branca",
+        "0.25 oz sirop simple"
+      ],
+      "method": "stir old fashioned gros glaçon",
+      "glass": "Old Fashioned",
+      "garnish": "zest d'orange",
+      "spirit": "Mezcal"
+    },
+    {
+      "id": "181ce4c0757d8102aecbc2d8c27b83fa",
+      "name": "Pimm’s cup",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Pimm’s",
+        "0.75 oz Jus de citron",
+        "0.5 oz sirop simple",
+        "0.25 oz Sirop de gingembre",
+        "1 pouce de concombre pilé",
+        "Soda (top)"
+      ],
+      "method": "shake & Dbl strain\n\nHighBall",
+      "glass": "Highball",
+      "garnish": "Garnish Concombre",
+      "spirit": "Pimm's"
+    },
+    {
+      "id": "181ce4c0757d8108a6c0d5e03d288544",
+      "name": "SOUR (WHISKY, BOURBON, RHUM, TEQUILA, VODKA, APEROL, CAMPARI)",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Spiritueux",
+        "0.75 oz Sirop simple",
+        "0.75 oz Citron frais (Lime si tequila ou rhum)",
+        "Blanc d’oeuf"
+      ],
+      "method": "Double shake \n\nFine strain\n\nServir sur glace fraîche si servi dans old fashioned.",
+      "glass": "Old Fashioned OU Coupette \n\n*** Alcools blancs en coupette. alcools bruns en Old Fashioned sur glace",
+      "garnish": "citron déshydraté",
+      "spirit": "All spirits"
+    },
+    {
+      "id": "181ce4c0757d810ca916d43b461bd413",
+      "name": "Bee’s Knees",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.5 oz Jus de citron",
+        "0.25 oz Sirop de miel"
+      ],
+      "method": "shake & fine strain",
+      "glass": "Coupette",
+      "garnish": "zest de citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d810fa221e9bb7a5b636a",
+      "name": "Boulevardier",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Bourbon",
+        "1oz Campari",
+        "1oz Vermouth Doux"
+      ],
+      "method": "Stirred et servi sur gros glaçon",
+      "glass": "Old Fashioned",
+      "garnish": "-Zeste d’orange",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d8113873eed03e218aa5e",
+      "name": "Laphroaig Project",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Chartreuse Verte",
+        "0.5 oz Chartreuse jaune",
+        "0.5 oz Scotch Laphroaig Quarter Cask (ou 10 ans)",
+        "0.5 oz Maraschino",
+        "1 oz Jus de citron",
+        "2 traits Bitters à la pêche"
+      ],
+      "method": "Shake \n\nFine Strain",
+      "glass": "Coupette",
+      "garnish": "Zest de citron",
+      "spirit": "Chartreuse verte"
+    },
+    {
+      "id": "181ce4c0757d81268239d27a2ab90488",
+      "name": "Sbagliato",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Campari",
+        "1 oz Sweet vermouth",
+        "Prosecco (TOP)"
+      ],
+      "method": "Dans un verre à mélanger. stir campari et vermouth.\n\nStrain sur gros cube et topper au prosecco",
+      "glass": "Oversized rocks glass",
+      "garnish": "Rondelle d'orange frais",
+      "spirit": "Apéritif"
+    },
+    {
+      "id": "181ce4c0757d81278d45db6b1d61eb87",
+      "name": "Sidecar",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Cognac Pierre Ferrand Ambré",
+        "0.75 oz Dry Curaçao Pierre Ferrand",
+        "1 oz Jus de Citron",
+        "0.25 oz Sirop Simple"
+      ],
+      "method": "Shake and fine strain",
+      "glass": "Coupette",
+      "garnish": "demi rim de sucre",
+      "spirit": "Brandy"
+    },
+    {
+      "id": "181ce4c0757d8129a21fd744c99b9c80",
+      "name": "Bramble",
+      "source": "maison",
+      "ingredients": [
+        "1.25 oz Gin",
+        "0.75 oz Citron",
+        "0.5 oz Sirop simple",
+        "0.75 0z Liqueur de Mûres sur glace concassée"
+      ],
+      "method": "Shake gin. citron et sirop simple strain sur glace concassée dans Old Fashioned mince Verser liqueur de mûres sur dessus",
+      "glass": "Oversized rocks glass",
+      "garnish": "zest de citron pailles",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d8129b2c1c2912fa3d73a",
+      "name": "Between the Sheets",
+      "source": "maison",
+      "ingredients": [
+        "0.75 oz Cognac Pierre Ferrand Ambré",
+        "0.75 oz Plantation Dark",
+        "0.75 oz Dry Curaçao",
+        "0.25 oz Jus de citron",
+        "1 trait Regan’s"
+      ],
+      "method": "shake & fine strain",
+      "glass": "Coupette",
+      "garnish": "Zest d’orange flambée",
+      "spirit": "Brandy"
+    },
+    {
+      "id": "181ce4c0757d812a999fd13c8ebeb2f5",
+      "name": "Corpse Reviver #2",
+      "source": "maison",
+      "ingredients": [
+        "Absinthe rince",
+        "0.75 oz Gin",
+        "0.75 oz Lillet Blanc",
+        "0.75 oz Dry Curaçao",
+        "0.75 oz Jus de citron"
+      ],
+      "method": "Shake Fine strain Coupette rincé à l’absinthe",
+      "glass": "Coupette",
+      "garnish": "zest de citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d812cabd2c78d043bb945",
+      "name": "Last Word",
+      "source": "maison",
+      "ingredients": [
+        "0.75 oz Gin rail",
+        "0.75 oz Chartreuse verte",
+        "0.75 oz Marashino Luxardo",
+        "0.75 oz Jus de lime"
+      ],
+      "method": "Shake & Double strain\ncoupette",
+      "glass": "Coupette",
+      "garnish": "Lime wheel désydratter",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d8131b832c7d29da80f68",
+      "name": "Amaretto Sour",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Ammaretto",
+        "1 oz Jus de frais",
+        "0.25 oz Sirop simple*",
+        "1 blanc d’oeuf"
+      ],
+      "method": "Double shake \nFine strain\nServe on fresh ice",
+      "glass": "Olf fashioned \n\nSur glace",
+      "garnish": "10 traits d'angostura sur la mousse &\nRondelle de citron déshydraté",
+      "spirit": "Liqueur"
+    },
+    {
+      "id": "181ce4c0757d81328225d760f1e902d5",
+      "name": "Americano",
+      "source": "maison",
+      "ingredients": [
+        "1 oz sweet vermouth",
+        "1 oz campari",
+        "Sada (top)"
+      ],
+      "method": "Dans un verre à mélanger. stir campari et vermouth.\n\nStrain sur long glaçon et topper au soda",
+      "glass": "Highball \n\nSur glace",
+      "garnish": "Garnish avec rondelle d'orange frais",
+      "spirit": "Apéritif"
+    },
+    {
+      "id": "181ce4c0757d8133a1fedce7d65b9e31",
+      "name": "Aperol Spritz",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Luxardo Apéritivo",
+        "1 oz soda",
+        "3 oz cava"
+      ],
+      "method": "Build sur glace",
+      "glass": "Verre à vin sans pied. si dispo. Si non. verre à vin.",
+      "garnish": "Garnish avec rondelle d'orange frais",
+      "spirit": "Apéritif"
+    },
+    {
+      "id": "181ce4c0757d8133a3dcc7647bb9b8cb",
+      "name": "Blue Blazer",
+      "source": "maison",
+      "ingredients": [
+        "2 oz blended scotch",
+        "2 oz hot water"
+      ],
+      "method": "Allumez le liquide en feu. Faire passer d’une timbale à l’autre. Éteindre.",
+      "glass": "Old Fashioned",
+      "garnish": "Zeste de citron",
+      "spirit": "Scotch"
+    },
+    {
+      "id": "181ce4c0757d8135bfbfd95e3c8a5690",
+      "name": "Blood and Sand",
+      "source": "maison",
+      "ingredients": [
+        "0.75 oz Chivas",
+        "0.75 oz Sweet Vermouth",
+        "0.75 oz Maurin Quina",
+        "0.75 oz Jus d’orange"
+      ],
+      "method": "shake fine strain coupette ou old fashioned sur glace (ask client)",
+      "glass": "Coupette",
+      "garnish": "zest d’orange et cerise",
+      "spirit": "Scotch"
+    },
+    {
+      "id": "181ce4c0757d8142a2cbe03621a5086d",
+      "name": "Negroni",
+      "source": "maison",
+      "ingredients": [
+        "1 oz campari",
+        "1oz gin",
+        "1oz vermouth rouge"
+      ],
+      "method": "Stirred & strain\nOld Fashioned",
+      "glass": "Old Fashioned",
+      "garnish": "Zeste d’orange",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81438c47c81469754171",
+      "name": "Rob Roy",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Chivas",
+        "1 oz Vermouth Doux",
+        "6 traits Angostura"
+      ],
+      "method": "Stirred",
+      "glass": "Coupette",
+      "garnish": "cerise",
+      "spirit": "Scotch"
+    },
+    {
+      "id": "181ce4c0757d81479e99f822758f884f",
+      "name": "Margarita",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Tequila",
+        "0.5 Dry Curaçao Pierre Ferrand",
+        "0.75 jus de lime",
+        "0.5 sirop simple"
+      ],
+      "method": "shake&double strain\n\nMartini ou Water glass Demi rim de sel",
+      "glass": "Coupette ou Rocks\n\nDemi rim de sel",
+      "garnish": "Rondelle de lime\n\nDemi rim de sel",
+      "spirit": "Tequila"
+    },
+    {
+      "id": "181ce4c0757d8149a10acdf37251907f",
+      "name": "Mojito",
+      "source": "maison",
+      "ingredients": [
+        "2 oz plantation Blanc",
+        "6 cubes de limes pressés",
+        "0.5 oz sirop simple",
+        "10 feuilles de menthe",
+        "Top Soda"
+      ],
+      "method": "Build highball\nCrushed ice",
+      "glass": "Highball",
+      "garnish": "Tête de menthe\n\nQartier de lime\n\nAngostura dash on top",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d8150859cc4e9437f2577",
+      "name": "White Lady",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz gin",
+        "0.5 oz dry curacao",
+        "0.75 oz jus de citron",
+        "0.25 oz Sirop simple",
+        "Egg white (optional)"
+      ],
+      "method": "Shake & fine strain \n\nDouble shake (if with egg white)",
+      "glass": "Coupette",
+      "garnish": "Lemon zest",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d8150af93df1efde7062e",
+      "name": "Eastside",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "1oz Jus de lime",
+        "0.5 oz sirop simple",
+        "4 morceaux de concombre",
+        "4 feuilles de menthe"
+      ],
+      "method": "Shake and fine strain",
+      "glass": "Coupette",
+      "garnish": "Tête de menthe\navec rondelle de concombre",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81538f08d276bd2594de",
+      "name": "Vesper",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "1 oz vodka",
+        "0.75 Cocchi Americano"
+      ],
+      "method": "shake \n\n(NOT FINE STRAINED)",
+      "glass": "Coupette",
+      "garnish": "zest de citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d815488a1e0549316cb01",
+      "name": "Manathan",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Canadian Club Rye",
+        "1 oz vermouth rouge",
+        "6 traits angostura"
+      ],
+      "method": "-stir & strain\n\n-Coupette",
+      "glass": "Coupette",
+      "garnish": "Cerise Marinée\n\nPerfect ,sweet or ½-½",
+      "spirit": "Rye"
+    },
+    {
+      "id": "181ce4c0757d8154a5f0f3e85548b2f6",
+      "name": "New York Sour",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Bourbon",
+        "1 oz Jus de citron",
+        "0.5 oz Sirop simple",
+        "0.5 oz de vin rouge"
+      ],
+      "method": "shake fine strain old fashioned sur glace Float de vin rouge",
+      "glass": "Old Fashioned",
+      "garnish": "Zest de citron",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d815c9288c4ce5de7c48a",
+      "name": "Daisy",
+      "source": "maison",
+      "ingredients": [
+        "2oz gin",
+        "0.75oz jus de citron",
+        "0.75oz Curaçao Pierre Ferrand",
+        "Soda"
+      ],
+      "method": "Shake and strain\n\nSur gros glaçon\n\nTop Soda",
+      "glass": "Old Fashioned",
+      "garnish": "Zest de citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d815da33bcc3f95565800",
+      "name": "Hanky Panky",
+      "source": "maison",
+      "ingredients": [
+        "1 oz gin",
+        "1 oz sweet vermouth",
+        "1 barspoon Fernet Branca"
+      ],
+      "method": "shake fine strain coupette",
+      "glass": "Coupette",
+      "garnish": "zest d’orange",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d815dbe5de2f92e3905a2",
+      "name": "Michelada",
+      "source": "maison",
+      "ingredients": [
+        "1 oz tequila",
+        "6 dash tabasco",
+        "6 dash worcestershire",
+        "0.5 jus de lime",
+        "2 oz Clamato",
+        "Top bière blonde"
+      ],
+      "method": "Cuban roll tous les ingrédients à l'exception de la bière\n\nServir dans highball sans glace\n\nTop avec bière blonde",
+      "glass": "Highball\n\nRim de Tajine",
+      "garnish": "no garnish",
+      "spirit": "Tequila"
+    },
+    {
+      "id": "181ce4c0757d81608e8fc4b2cf854fba",
+      "name": "Kir royal (et Kir)",
+      "source": "maison",
+      "ingredients": [
+        "0.5 oz Liqueur de Cassis",
+        "Top au Cava (ou vin)"
+      ],
+      "method": "build",
+      "glass": "flute à champagne",
+      "garnish": "Orchidée",
+      "spirit": "Vin"
+    },
+    {
+      "id": "181ce4c0757d8164b4e9ce323145b4a7",
+      "name": "Champs Élysées",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Cognac",
+        "0.5 oz Chartreuse jaune",
+        "0.75 oz Jus de citron",
+        "0.5 oz Sirop simple",
+        "4 traits angostura"
+      ],
+      "method": "shake & fine strain",
+      "glass": "Coupette",
+      "garnish": "Zest de citron",
+      "spirit": "Cognac"
+    },
+    {
+      "id": "181ce4c0757d8165911ecced1f2da0cf",
+      "name": "Gimlet",
+      "source": "maison",
+      "ingredients": [
+        "2 oz gin",
+        "0.75 oz Jus de lime",
+        "0.75 oz Sirop Simple"
+      ],
+      "method": "Shake and fine strain",
+      "glass": "Coupette",
+      "garnish": "Lime wheel",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d8169bd37ecfb8958814a",
+      "name": "Jungle Bird",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Plantation Dark",
+        "0.5 oz campari",
+        "0.5 oz Jus de lime",
+        "1 oz Jus d’Ananas",
+        "0.5 Simple syrup"
+      ],
+      "method": "shake fine strain old fashioned avec glace concassée",
+      "glass": "Old Fashioned",
+      "garnish": "rondelle de lime et feuilles d’ananas, si possible",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d8171ab23dc18a4c9d1de",
+      "name": "Clover Club",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Gin",
+        "0.5 oz Vermouth blanc",
+        "0.75 oz Jus de citron",
+        "0.5 oz Sirop Simple",
+        "blanc d’oeuf",
+        "5 framboises"
+      ],
+      "method": "Muddle framboises\n\nDouble shake \n\nFine strain",
+      "glass": "Coupette",
+      "garnish": "3 framboises sur pique à cocktail",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d8172a55cdc82efa32cff",
+      "name": "Bloody ceasar\n\n**bloody mary not available due to not having tomato juice.",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Vodka or other base spirit",
+        "0.5 oz citron",
+        "2 dash tabasco",
+        "8 dash Worcestershire",
+        "6 oz Clamato"
+      ],
+      "method": "Cuban roll",
+      "glass": "Highball \n\nSur glace\n\nRim de tajine",
+      "garnish": "Garnish Citron & Shave de celeri + Olive\n\nrim de Tajine",
+      "spirit": "All base spirits"
+    },
+    {
+      "id": "181ce4c0757d8172b31cda44a943f3dd",
+      "name": "Brandy Crusta",
+      "source": "maison",
+      "ingredients": [
+        "1.75 oz Cognac Pierre Ferrand Ambré",
+        "0.25 Dry Curaçao Pierre Ferrand",
+        "0.25 oz Maraschino Luxardo",
+        "0.5 oz Jus de citron",
+        "0.25 oz Sirop simple",
+        "2 traits angostura"
+      ],
+      "method": "shake fine strain",
+      "glass": "flute à champagne",
+      "garnish": "gros rim de sucre avec méga zest d’orange qui fait le tour de l’intérieur de la flûte",
+      "spirit": "Brandy"
+    },
+    {
+      "id": "181ce4c0757d81748934fde114b64805",
+      "name": "Caipirinia",
+      "source": "maison",
+      "ingredients": [
+        "2 oz cachaca",
+        "6 cubes de lime pilées",
+        "½ sachet sucre brun",
+        "½ sirop simpe"
+      ],
+      "method": "Piller cubes de lime\n\nBuild dans oversized old fashioned\n\nRemplir de glace concassé\n\nswizzle & topper de glace concassée",
+      "glass": "Oversized Tumbler",
+      "garnish": "Garnish with lime wheel",
+      "spirit": "Cachaça"
+    },
+    {
+      "id": "181ce4c0757d8178aa8ff4128378dd7c",
+      "name": "Moscow Mule",
+      "source": "maison",
+      "ingredients": [
+        "2 oz vodka",
+        "0.75 oz lime",
+        "1 oz sirop de gingembre",
+        "Soda (TOP)"
+      ],
+      "method": "Build\non ice in coper mugs.\n-Top soda\n\nOver crushed ice",
+      "glass": "Mule mug",
+      "garnish": "Garnish with quartier de lime and 4 dash angostura",
+      "spirit": "Vodka"
+    },
+    {
+      "id": "181ce4c0757d818082f0c0938c70ed1c",
+      "name": "Old Cuban",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Plantation Dark",
+        "0.5 oz Jus de lime",
+        "0.5 oz Sirop simple",
+        "4 traits Angostura",
+        "4 feuilles menthe",
+        "Top au Cava"
+      ],
+      "method": "Shake fine strain old fashioned gros glaçon Topper Cava",
+      "glass": "Coupette",
+      "garnish": "Tête de menthe",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d8187b7efdcf21ba05be0",
+      "name": "Paloma",
+      "source": "maison",
+      "ingredients": [
+        "2 oz tequila",
+        "2 oz pamplemousse",
+        "0.5 oz Jus de lime",
+        "0.25 oz Sirop d'agave",
+        "Soda (TOP)"
+      ],
+      "method": "Shake Strain into High Ball",
+      "glass": "Highball",
+      "garnish": "Grapefruit slice or zest.",
+      "spirit": "Tequila"
+    },
+    {
+      "id": "181ce4c0757d818cb420f47898a00f0b",
+      "name": "Mai Tai",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Rhum blanc",
+        "1 oz Rhum dark",
+        "0.5 oz Dry Curaçao Pierre Ferrand",
+        "0.5 oz Jus de lime",
+        "0.5 oz Orgeat",
+        "top Angostura"
+      ],
+      "method": "Shake\nStrain into Old Fashioned with crushed ice",
+      "glass": "Tiki ou oversized rocks glass évasé",
+      "garnish": "Garnish with mint head and lime wheel",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d81918a42c1c027b81867",
+      "name": "Pisco Sour",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Pisco",
+        "0.5 oz Jus de Citron",
+        "0.5 oz Jus de Lime",
+        "0.75 oz Sirop simple",
+        "Blanc d’oeuf"
+      ],
+      "method": "Double shake \n\nFine strain",
+      "glass": "Coupette",
+      "garnish": "Spray d'Angostura",
+      "spirit": "Pisco"
+    },
+    {
+      "id": "181ce4c0757d8193b51aed777c145242",
+      "name": "Boston Sour",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Bourbon",
+        "1 oz Jus de citron",
+        "0.5 oz Sirop simple",
+        "Blanc d’oeuf",
+        "0.5oz de vin rouge (FLOAT)"
+      ],
+      "method": "Dry + wet shake old fashioned sur glace\n\nFloat de vin rouge",
+      "glass": "Old Fashioned",
+      "garnish": "Rondelle de citron déshydratée",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d81988efec6bcc14b7ff1",
+      "name": "old fashionned classique",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Jim beam",
+        "Barspoon Sirop simple",
+        "4-5 traits angotura"
+      ],
+      "method": "Stir in mixing glass. Pour over fresh ice in Old Fashioned glass.",
+      "glass": "Old Fashioned",
+      "garnish": "Orange twist",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d8199a61dda0f6c502bad",
+      "name": "Penicilin",
+      "source": "maison",
+      "ingredients": [
+        "2 oz John Barr Blended Scotch",
+        "0.75 Jus de citron",
+        "0.25 sirop de miel",
+        "0.25 oz Sirop de gingembre",
+        "0.25 oz Bowmore 12 en Float"
+      ],
+      "method": "shake + dbl strain sur gros glaçon \n\nFloat Bowmore 12 ans",
+      "glass": "Oversized rocks glass",
+      "garnish": "Candied ginger ou morceau de gingembre",
+      "spirit": "Scotch"
+    },
+    {
+      "id": "181ce4c0757d819a9fbbd8ce6c8478b0",
+      "name": "Bobby Burns",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Chivas",
+        "0.5 oz Sweet Vermouth",
+        "0.25 oz Bénédictine"
+      ],
+      "method": "Stir",
+      "glass": "Coupette",
+      "garnish": "Nada",
+      "spirit": "Scotch"
+    },
+    {
+      "id": "181ce4c0757d819dac1ac32c1eb25b6d",
+      "name": "French 75",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Gin",
+        "0.5 oz Jus de citron",
+        "0.25 oz Sirop simple",
+        "Prosecco (TOP)"
+      ],
+      "method": "Shake et fine strain\n\nTop de prosecco",
+      "glass": "flute à champagne",
+      "garnish": "Lemon zest",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81a085bbcb9a5aa7690c",
+      "name": "Long Island Iced Tea",
+      "source": "maison",
+      "ingredients": [
+        "0.5 oz Rhum blanc",
+        "0.5 oz Gin",
+        "0.5 oz Dry Curaçao Pierre Ferrand",
+        "0.5 oz Vodka",
+        "0.5 oz Tequila",
+        "0.75 oz Jus de citron",
+        "0.75 oz Sirop simple",
+        "Fond de coke"
+      ],
+      "method": "shake\nstrain in crushed ice\n-coke en premier",
+      "glass": "Hurricane",
+      "garnish": "Quartier Citron",
+      "spirit": "All base spirits"
+    },
+    {
+      "id": "181ce4c0757d81a0b324f89310f832bc",
+      "name": "Mint julep",
+      "source": "maison",
+      "ingredients": [
+        "2 oz bourbon",
+        "0.5 oz sirop simple",
+        "10 feuilles de menthes"
+      ],
+      "method": "build dans julep\n\nswizzle avec glasse concassée\n\nTopper de montagne de glace",
+      "glass": "Julep",
+      "garnish": "Tasse a julep en métal\n\nTête de menthe\n\n10 traits d'angostura",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d81a289acc3314771b02f",
+      "name": "Aviation",
+      "source": "maison",
+      "ingredients": [
+        "2 oz gin",
+        "0.5oz maraschino",
+        "0.5 oz Jus de citron",
+        "1 Barspoon de Crème de violette (en float)"
+      ],
+      "method": "Shake & fine strain tous les ingrédients sauf la liqueur de violette. \n\nAjouter la liqueur de violette en float.",
+      "glass": "Coupette\n\nSur glace",
+      "garnish": "Zest de citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81ad8f1cf41ee70655d2",
+      "name": "Tom Collins",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.75 oz Jus de citron",
+        "0.75 oz Sirop simple",
+        "Soda (TOP)"
+      ],
+      "method": "shake. add soda in shaker & strain on new ice",
+      "glass": "Highball",
+      "garnish": "Quartier citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81ada9facf6de40ff12f",
+      "name": "El Diablo",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Tequila",
+        "0.5 oz Jus de lime",
+        "0.25 oz Creme de Cassis",
+        "0.50 oz Sirop de gingembre",
+        "Soda (TOP)"
+      ],
+      "method": "Shake and strain over ice and top with soda",
+      "glass": "Highball",
+      "garnish": "rondelle de lime déshydratée",
+      "spirit": "Tequila"
+    },
+    {
+      "id": "181ce4c0757d81afa38ef8a3f97c86a3",
+      "name": "Ramos gin fizz",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.5 oz Jus de Citron",
+        "0.5 oz Jus de Lime",
+        "1 oz Sirop simple",
+        "1 oz Crème",
+        "1 blanc d’oeuf",
+        "2 traits Eau de fleur d’oranger",
+        "Soda (TOP)"
+      ],
+      "method": "Dans le fond d'un highball refroidi. verser 1 oz soda.\n\nDouble shake tous les ingrédients sans le soda sur 1 oz de glace concassée + 2 glaçon hoshizaki \n\nShake jusqu'à ce que la glace soit dissoute. \n\nVerser de haut et rapidement sur le soda dans le fond du verre. Toper de soda jusqu'à ce que la mousse rejoigne le rebord du verre (comme un ramos sans muffin top)",
+      "glass": "Highball",
+      "garnish": "lime rapé sur le dessus",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81b1821bdd6b0c49c057",
+      "name": "White russian",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Vodka rail",
+        "1 oz Liqueur de Café",
+        "1 oz Lait 3.25%"
+      ],
+      "method": "Build on ice",
+      "glass": "Old Fashioned",
+      "garnish": "Stir stick",
+      "spirit": "Vodka"
+    },
+    {
+      "id": "181ce4c0757d81b29d5cf0c252e27ba6",
+      "name": "Gin Fizz",
+      "source": "maison",
+      "ingredients": [
+        "2 oz gin",
+        "1 oz citron",
+        "0.75 oz Sirop simple",
+        "1 blanc d'oeuf",
+        "Soda (TOP)"
+      ],
+      "method": "Dans le fond d'un highball refroidi. verser 1 oz soda.\n\nDouble shake tous les ingrédients sans le soda\n\nVerser de haut et rapidement sur le soda dans le fond du verre. Toper de soda jusqu'à ce que la mousse rejoigne le rebord du verre (comme un ramos sans muffin top)",
+      "glass": "Medium highball",
+      "garnish": "Sans glace, zeste citron",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81b3a5a6c106b37e4db6",
+      "name": "Black Russian",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Vodka rail",
+        "1oz Liqueur de Café"
+      ],
+      "method": "Build sur hoshizaki",
+      "glass": "Old Fashioned",
+      "garnish": "Stir stick",
+      "spirit": "Vodka"
+    },
+    {
+      "id": "181ce4c0757d81b58e9fff4b5b57640a",
+      "name": "Siesta",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz tequila",
+        "0.5 oz campari",
+        "0.5 oz pamplemousse",
+        "0.5 oz Jus de lime",
+        "0.5 oz Sirop simple"
+      ],
+      "method": "shake fine strain coupette",
+      "glass": "Nick & Nora",
+      "garnish": "Zest pamplemousse",
+      "spirit": "Tequila"
+    },
+    {
+      "id": "181ce4c0757d81b5bea7f307c96ef9aa",
+      "name": "Dark and Stormy",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Plantation Dark",
+        "0.75 oz lime",
+        "1 oz sirop de gingembre",
+        "Soda (TOP)"
+      ],
+      "method": "Build in Highball over crushed ice\n\nTop avec soda\n\nSwiccle and top with fresh crushed ice.",
+      "glass": "Highball",
+      "garnish": "Garnish with quartier de lime and 4 dash angostura",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d81bcadb4c791dfe5c3f7",
+      "name": "vieux-carré",
+      "source": "maison",
+      "ingredients": [
+        "1 oz rye",
+        "1 oz cognac",
+        "0.75 oz vermouth rouge",
+        "1 barspoon bénédictine",
+        "5 traits angostura",
+        "5 traits peychauds"
+      ],
+      "method": "Stirred et servi sur gros glaçon",
+      "glass": "Oversized rocks glass",
+      "garnish": "- Zest citron",
+      "spirit": "Cognac ET Rye"
+    },
+    {
+      "id": "181ce4c0757d81bf9100d79723d2a739",
+      "name": "Planters Punch",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Dark rum",
+        "1 oz Fresh orange juice",
+        "1 oz Fresh pineapple juice",
+        "0.75 oz Fresh lemon juice",
+        "0.25 oz Grenadine",
+        "0.25 oz Sugar syrup",
+        "10 traits Angostura bitters"
+      ],
+      "method": "Build in highball over crushed ice.\nSwizzle",
+      "glass": "Hurricane",
+      "garnish": "Garnish with tête de menthe, lime wheel",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d81c087a1c4726d9f3b2b",
+      "name": "El Présidente",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz rum blanc",
+        "1 oz Dolin blanc",
+        "0.5 oz Cointreau"
+      ],
+      "method": "Shake and fine strain",
+      "glass": "Coupette",
+      "garnish": "Zest d'orange",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d81c28a8ffba2a2de8044",
+      "name": "Hemingway Daiquiri",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Rhum blanc",
+        "0.5 oz Luxardo maraschino",
+        "0.75 oz Pamplemousse",
+        "0.5 oz Jus de lime"
+      ],
+      "method": "shake fine strain coupette",
+      "glass": "Coupette",
+      "garnish": "rondelle de lime",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d81c5ae54cb9187812e50",
+      "name": "Paperplane",
+      "source": "maison",
+      "ingredients": [
+        "0.75 oz Jim Beam",
+        "0.75 oz Amaro Nonino",
+        "0.75 oz Apérol",
+        "0.75 oz Jus de citron"
+      ],
+      "method": "shake fine strain coupette",
+      "glass": "Coupette",
+      "garnish": "avion en papier",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d81cabf65e040e8b08069",
+      "name": "Bijou",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Gin",
+        "0.75 oz Vermouth",
+        "0.5 oz Chartreuse",
+        "1 trait Regan’s"
+      ],
+      "method": "shake & fine strain",
+      "glass": "Coupette",
+      "garnish": "Zest d'orange",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81dd8a5bc1128acdbe64",
+      "name": "Daiquiri",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Rhum blanc",
+        "1 oz Jus de lime",
+        "0.75 oz sirop simple"
+      ],
+      "method": "Shake and strain",
+      "glass": "Coupette",
+      "garnish": "Rien. Nada. Clean.",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d81e1bf2ffb14422735b2",
+      "name": "Brandy Alexander",
+      "source": "maison",
+      "ingredients": [
+        "0.75 oz Brandy",
+        "0.75 oz Crème de cacao",
+        "0.75 oz Crème"
+      ],
+      "method": "shake & double strain",
+      "glass": "Coupette",
+      "garnish": "muscade rapé",
+      "spirit": "Brandy"
+    },
+    {
+      "id": "181ce4c0757d81e2b887e985177cc8ae",
+      "name": "Bronx",
+      "source": "maison",
+      "ingredients": [
+        "1 oz gin",
+        "0.5 oz dry vermouth",
+        "0.5 oz sweet vermouth",
+        "1 oz jus d’orange"
+      ],
+      "method": "shake fine strain",
+      "glass": "Coupette",
+      "garnish": "rondelle d’orange",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81e2bbccc2806d700ebf",
+      "name": "Martinez",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.75 oz Vermouth Doux",
+        "0.25 Maraschino Luxardo",
+        "4 traits Angostura"
+      ],
+      "method": "Stir",
+      "glass": "Coupette",
+      "garnish": "cerise",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81e7869cdeca9225de98",
+      "name": "MARTINI METHODS",
+      "source": "maison",
+      "ingredients": [
+        "Dry Martini",
+        "2 oz Gin ou Vodka (demander la préférence)",
+        "Accompagnement classique : quelques gouttes de vermouth sec en rinçage  ou au choix sans vermouth.",
+        "Bone Dry Martini",
+        "2 oz Gin",
+        "0.5 oz Vermouth sec",
+        "Rinçage de Bowmore (whisky).",
+        "Burnt Martini",
+        "2 oz Gin ou Vodka",
+        "0.5 oz Vermouth sec",
+        "0.5 oz Jus d'olive.",
+        "Dirty Martini",
+        "2 oz Gin ou Vodka",
+        "0.5 oz Vermouth sec",
+        "Ajouter une touche de saumure d'olive pour un goût salé.",
+        "Extra Dry Martini",
+        "2 oz Gin ou Vodka",
+        "0.25 oz Vermouth sec (peut être réduit selon la préférence).",
+        "Perfect Martini",
+        "2 oz Gin",
+        "0.25 oz Vermouth sec",
+        "0.25 oz Vermouth doux",
+        "Mélange équilibré entre sec et doux.",
+        "Sweet Martini",
+        "2 oz Gin",
+        "0.25 oz Vermouth doux",
+        "Goût plus rond et sucré."
+      ],
+      "method": "Stirred OU Shake OU Cuban Roll - À la demande du client",
+      "glass": "Coupette",
+      "garnish": "Zest OU Olive Ou Onion - À la demande du client",
+      "spirit": "Vodka OU Gin"
+    },
+    {
+      "id": "181ce4c0757d81e89783d2216ef3df21",
+      "name": "Brooklyn",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz CC Rye ou bourbon - à la demande client 0.5 oz Dry vermouth 0.25 oz maraschino 0.25 oz amer picon (puisque l'amers picon n'est pas dispo au QC = Montenegro + 15 dash de Regan’s)"
+      ],
+      "method": "Stir",
+      "glass": "Coupette",
+      "garnish": "Zest d'orange",
+      "spirit": "Bourbon (ou Rye)"
+    },
+    {
+      "id": "181ce4c0757d81ec8cbef4e501715a34",
+      "name": "Espresso Martini",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Vodka",
+        "1 oz Kahlua",
+        "1.5 oz Café frais"
+      ],
+      "method": "Hard shake",
+      "glass": "Coupette",
+      "garnish": "Graines de café",
+      "spirit": "Vodka"
+    },
+    {
+      "id": "181ce4c0757d81f28a30d6dee740470d",
+      "name": "Southside",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "1oz Jus de lime",
+        "0.5 oz sirop simple",
+        "4 feuilles de menthe"
+      ],
+      "method": "Shake and fine strain",
+      "glass": "Coupette",
+      "garnish": "Tête de menthe\navec rondelle de concombre",
+      "spirit": "Gin"
+    },
+    {
+      "id": "181ce4c0757d81f4aadcdf1d36810324",
+      "name": "Cosmopolitan",
+      "source": "maison",
+      "ingredients": [
+        "1.5 oz Vodka",
+        "0.75 oz oz Dry Curaçao Pierre Ferrand",
+        "0.5 oz Jus de lime",
+        "1 oz cranberry juice"
+      ],
+      "method": "shake & fine strain",
+      "glass": "Coupette",
+      "garnish": "Orange Zest",
+      "spirit": "Vodka"
+    },
+    {
+      "id": "181ce4c0757d81f58ba8e7802c3c2eff",
+      "name": "Sazerac",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Rye OU 2 oz Cognac OU 1oz de chaque (drinker's choice)",
+        "0.25 oz sirop simple",
+        "3 traits Bitters Peychaud's",
+        "Rincé à l'absinthe"
+      ],
+      "method": "Rincer un old fashioned refroidi avec absinthe\n\nDans un verre à mélanger. stir tous les ingrédients\n\nStrain dans le verre rincé à l'absinthe",
+      "glass": "Old Fashioned",
+      "garnish": "express & discard lemon \n\nServir avec zest de citron exprimé on the side sur une napkin",
+      "spirit": "Rye"
+    },
+    {
+      "id": "181ce4c0757d81f98f38cbd4136cf901",
+      "name": "Rusty Nail",
+      "source": "maison",
+      "ingredients": [
+        "1.25 oz Chivas",
+        "0.75 oz Drambuie"
+      ],
+      "method": "Stired et servi sur gros glaçon",
+      "glass": "Old Fashioned",
+      "garnish": "stir stick",
+      "spirit": "Scotch"
+    },
+    {
+      "id": "181ce4c0757d81fc9641d19a60ee3b66",
+      "name": "Zombie",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Rhum blanc rail",
+        "1 oz Rhum brun rail",
+        "1 oz Jus de lime",
+        "0.5 oz Jus de citron",
+        "0.5 oz Jus d’orange",
+        "0.5 oz Jus ananas",
+        "0.5 oz Falernum"
+      ],
+      "method": "Build\n\n(En cas de manque de falernum - 0.25oz sirop de thé & cannelle + 0.25oz orgeat)",
+      "glass": "Hurricane",
+      "garnish": "Citron déshydraté",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d810fbfe4fe0e31d50ac5",
+      "name": "Gibson Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "Vodka (optional, instead of gin)",
+        "0.5 oz Vermouth Sec",
+        "Pickled onion (garnish)"
+      ],
+      "method": "Stirred. Garnished with a pearl onion.",
+      "glass": "Coupette",
+      "garnish": "Pickled onion (garnish)",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d8129ba0dd023b240b753",
+      "name": "Dirty Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "Vodka (optional, instead of gin)",
+        "0.5 oz Vermouth Sec",
+        "Olive brine"
+      ],
+      "method": "Stirred. Salty with olive brine.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d81588515f591993f2804",
+      "name": "Extra Dry Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "Vodka (optional, instead of gin)",
+        "0.25 oz Vermouth Sec",
+        "Olive or lemon zest (garnish)"
+      ],
+      "method": "Stirred. Very dry.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest (garnish)",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d817d9317fb1d43669a61",
+      "name": "Burnt Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "Vodka (optional, instead of gin)",
+        "0.5 oz Vermouth Sec",
+        "0.5 oz olive juice"
+      ],
+      "method": "Stirred. Smoky and salty.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d817ebb12f86b690c732a",
+      "name": "Bone Dry Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.5 oz Vermouth Sec",
+        "Rinse of Bowmore"
+      ],
+      "method": "Stirred. With a hint of whisky.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d81829569e54ab0114df3",
+      "name": "Perfect Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.25 oz Vermouth Sec",
+        "0.25 oz Vermouth Doux"
+      ],
+      "method": "Stirred. Balance of sweet and dry.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d81aab08ce16979b90431",
+      "name": "50/50 Martini",
+      "source": "maison",
+      "ingredients": [
+        "1 oz Gin",
+        "1 oz Vermouth Sec",
+        "Lemon twist or olive (garnish)"
+      ],
+      "method": "Stirred. Equal parts gin and vermouth.",
+      "glass": "Coupette",
+      "garnish": "Lemon twist or olive (garnish)",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d81c49a4cffebf4295471",
+      "name": "Dry Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "Vodka (optional, instead of gin)",
+        "Few drops oz Vermouth Sec",
+        "Olive or lemon zest (garnish)"
+      ],
+      "method": "Stirred. Classic and dry.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest (garnish)",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "181ce4c0757d81daad25ee85db38e928",
+      "name": "Sweet Martini",
+      "source": "maison",
+      "ingredients": [
+        "2 oz Gin",
+        "0.25 oz Vermouth Doux"
+      ],
+      "method": "Stirred. Sweet and smooth.",
+      "glass": "Coupette",
+      "garnish": "Olive or lemon zest",
+      "spirit": "Gin",
+      "tags": [
+        "martini"
+      ]
+    },
+    {
+      "id": "17dce4c0757d8095a9c6ec036d3c454a",
+      "name": "Dark and Stormy",
+      "source": "maison",
+      "season": "ski",
+      "ingredients": [
+        "2 oz Plantation Dark",
+        "0.75 oz lime",
+        "1 oz sirop de gingembre",
+        "Top avec soda"
+      ],
+      "method": "Swizzle and top with fresh crushed ice.\tGarnish with quartier de lime and 4 dash angostura",
+      "glass": "Highball",
+      "garnish": "lime wedge. 4 dashes Angostura",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d80068788ee4e40586349",
+      "name": "Boulevardier",
+      "source": "maison",
+      "season": "ski",
+      "ingredients": [
+        "1 oz Bourbon",
+        "1oz Campari",
+        "1oz Vermouth Doux"
+      ],
+      "method": "Stir sûr gros glaçon ou",
+      "glass": "Old Fashioned",
+      "garnish": "zest d'Orange",
+      "spirit": "Bourbon"
+    },
+    {
+      "id": "181ce4c0757d804ca8faf62aa9bcc0f7",
+      "name": "El Presidente",
+      "source": "maison",
+      "season": "ski",
+      "ingredients": [
+        "1.5 oz de rhum ambré (Plantation Dark ou similaire).",
+        "0.75 oz de vermouth doux.",
+        "0.25 oz de curaçao ou triple sec.",
+        "1 cuillère à café de grenadine."
+      ],
+      "method": "Shake & Fine Strain",
+      "glass": "Coupette",
+      "garnish": "zest d'Orange",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "181ce4c0757d80d58673c8596e8f1fcb",
+      "name": "Jungle Bird",
+      "source": "maison",
+      "season": "ski",
+      "ingredients": [
+        "1.5 oz Plantation Dark",
+        "0.5 oz campari",
+        "0.5 oz Jus de lime",
+        "1 oz Jus d’Ananas",
+        "0.5 Simple syrup"
+      ],
+      "method": "Shake & Fine Strain on Crushed Ice",
+      "glass": "",
+      "garnish": "feuilles d’ananas. Lime Wheel",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "39e2463a53844f35a992a1f35eb3d33a",
+      "name": "Cuba Libre",
+      "source": "maison",
+      "season": "ski",
+      "ingredients": [
+        "Quartiers lime",
+        "2oz Rhum",
+        "Top Cola"
+      ],
+      "method": "Built on ice",
+      "glass": "Highball",
+      "garnish": "lime wedge. Mint",
+      "spirit": "Rhum"
+    },
+    {
+      "id": "eb4b419bc2cd420aac59235bb04b1b31",
+      "name": "Batanga",
+      "source": "maison",
+      "season": "ski",
+      "ingredients": [
+        "2 oz (60 ml) de tequila (de préférence une tequila blanco de bonne qualité).",
+        "0.5 oz (15 ml) de jus de citron vert frais.",
+        "Top Cola"
+      ],
+      "method": "Rim de sel sur le verre \nBuilt",
+      "glass": "Highball",
+      "garnish": "Salt Rim",
+      "spirit": "Tequila"
+    }
+  ],
+  "exportedAt": "2026-10-02T11:37:56.162Z"
+}

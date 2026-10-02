@@ -1,36 +1,86 @@
 import { Card, CardBody, CardMedia } from '../ui/Card'
+import { ingredientParts } from '../../lib/recipes.mjs'
 import { Badge } from '../ui/Badge'
+import { Button } from '../ui/Button'
+import { FiHeart } from 'react-icons/fi'
 
-function formatName(name) {
-  if (!name) return ''
-  return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-}
-
-export function CocktailCard({ cocktail, style }) {
-  const { name, instructions, ingredients, image } = cocktail
-
-  return (
-    <Card className="flex flex-col animate-fade-up" style={style}>
-      <CardMedia src={image} alt={name} />
-      <CardBody>
-        <h3 className="font-display text-xl font-semibold tracking-tight text-ink transition-colors group-hover:text-accent-soft">
-          {formatName(name)}
-        </h3>
-
-        {ingredients?.length > 0 ? (
-          <div className="flex flex-wrap gap-1.5">
-            {ingredients.map((ingredient) => (
-              <Badge key={ingredient}>{ingredient}</Badge>
-            ))}
-          </div>
-        ) : null}
-
-        {instructions ? (
-          <p className="mt-auto text-sm leading-relaxed text-ink-muted/95 line-clamp-5">
-            {instructions}
-          </p>
-        ) : null}
-      </CardBody>
-    </Card>
-  )
+export function CocktailCard({ cocktail, favorite, onFavorite, style }) {
+   const { name, method, ingredients, image, glass, garnish, source, season } =
+      cocktail
+   return (
+      <Card className="flex flex-col animate-fade-up" style={style}>
+         <CardMedia src={image} alt={name} />
+         <CardBody>
+            <div className="flex items-start justify-between gap-2">
+               <div>
+                  <Badge>
+                     {source === 'api'
+                        ? 'TheCocktailDB'
+                        : season === 'ski'
+                        ? 'Semaine ski'
+                        : 'Maison'}
+                  </Badge>
+                  <h2 className="mt-3 break-words font-display text-2xl font-semibold text-ink">
+                     {name}
+                  </h2>
+               </div>
+               <Button
+                  variant="ghost"
+                  className="px-3"
+                  onClick={() => onFavorite(cocktail)}
+                  aria-pressed={favorite}
+                  aria-label={`${favorite ? 'Retirer' : 'Ajouter'} ${name} ${
+                     favorite ? 'des' : 'aux'
+                  } favoris`}
+               >
+                  <FiHeart
+                     className={favorite ? 'fill-accent text-accent' : ''}
+                     aria-hidden
+                  />
+               </Button>
+            </div>
+            <ul className="my-2 space-y-3">
+               {ingredients.map((ingredient, index) => {
+                  const item = ingredientParts(ingredient)
+                  return (
+                     <li
+                        key={index}
+                        className="flex items-baseline justify-between gap-4 border-b border-accent/10 pb-2"
+                     >
+                        <span className="min-w-0 break-words text-sm text-ink-muted">
+                           {item.name}
+                        </span>
+                        {item.amount && (
+                           <strong className="max-w-[55%] shrink-0 text-right text-2xl font-semibold tabular-nums text-accent-soft">
+                              {item.amount}
+                           </strong>
+                        )}
+                     </li>
+                  )
+               })}
+            </ul>
+            <p className="whitespace-pre-line text-sm leading-relaxed text-ink-muted">
+               {method || 'Méthode non renseignée.'}
+            </p>
+            <dl className="mt-auto grid grid-cols-2 gap-3 pt-4 text-sm">
+               <div>
+                  <dt className="text-xs uppercase tracking-widest text-accent">
+                     Verre
+                  </dt>
+                  <dd className="mt-1 break-words">
+                     {glass || 'Non renseigné'}
+                  </dd>
+               </div>
+               <div>
+                  <dt className="text-xs uppercase tracking-widest text-accent">
+                     Garniture
+                  </dt>
+                  <dd className="mt-1 break-words">
+                     {garnish || 'Non renseignée'}
+                  </dd>
+               </div>
+            </dl>
+         </CardBody>
+      </Card>
+   )
 }

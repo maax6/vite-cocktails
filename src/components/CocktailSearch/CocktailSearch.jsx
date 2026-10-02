@@ -1,223 +1,422 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { FiSearch, FiLoader } from 'react-icons/fi'
+import { useEffect, useMemo, useState } from 'react'
+import { FiSearch, FiShuffle, FiHeart } from 'react-icons/fi'
 import { Input } from '../ui/Input'
+import { Button } from '../ui/Button'
 import { CocktailCard } from './CocktailCard'
+import {
+   filterRecipes,
+   ingredientName,
+   localPool,
+   mapDrink,
+   normalize,
+   recipeKey,
+   validateRecipes,
+} from '../../lib/recipes.mjs'
 
-const COCKTAIL_DB_SEARCH =
-   'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
+const FAVORITES_KEY = 'speakeasy:favorites:v1'
+const tabs = [
+   ['maison', 'Maison'],
+   ['api', 'API'],
+   ['ski', 'Semaine ski'],
+]
 
-const DEBOUNCE_MS = 350
-
-function mapDrink(drink) {
-   const ingredients = []
-   for (let i = 1; i <= 15; i++) {
-      const ingredient = drink[`strIngredient${i}`]
-      if (!ingredient) continue
-      const measure = drink[`strMeasure${i}`]
-      ingredients.push(
-         measure ? `${measure.trim()} ${ingredient.trim()}` : ingredient.trim()
-      )
-   }
-   return {
-      id: drink.idDrink,
-      name: drink.strDrink,
-      instructions: drink.strInstructions || '',
-      ingredients,
-      image: drink.strDrinkThumb || null,
+function readFavorites() {
+   try {
+      const stored = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]')
+      if (!Array.isArray(stored)) return []
+      return [
+         ...new Map(
+            stored.map((recipe) => {
+               validateRecipes([recipe])
+               return [recipeKey(recipe), recipe]
+            })
+         ).values(),
+      ]
+   } catch {
+      return []
    }
 }
 
 export function CocktailSearch() {
-   const [cocktail, setCocktail] = useState('')
-   const [cocktailData, setCocktailData] = useState([])
-   const [loading, setLoading] = useState(false)
-   const [error, setError] = useState('')
-   const [hasSearched, setHasSearched] = useState(false)
-   const requestIdRef = useRef(0)
+   const [tab, setTab] = useState('maison')
+   const [query, setQuery] = useState('')
+   const [debounced, setDebounced] = useState('')
+   const [recipes, setRecipes] = useState([])
+   const [localLoading, setLocalLoading] = useState(true)
+   const [localError, setLocalError] = useState('')
+   const [apiData, setApiData] = useState([])
+   const [apiLoading, setApiLoading] = useState(false)
+   const [apiError, setApiError] = useState('')
+   const [online, setOnline] = useState(navigator.onLine)
+   const [spirit, setSpirit] = useState('')
+   const [glass, setGlass] = useState('')
+   const [available, setAvailable] = useState([])
+   const [favorites, setFavorites] = useState(readFavorites)
+   const [favoritesOnly, setFavoritesOnly] = useState(false)
+   const [storageError, setStorageError] = useState('')
+   const [random, setRandom] = useState(null)
+   const [reload, setReload] = useState(0)
 
-   const searchCocktails = useCallback(async (rawQuery) => {
-      const query = rawQuery.trim()
-      if (!query) {
-         setCocktailData([])
-         setError('')
-         setHasSearched(false)
-         setLoading(false)
-         return
-      }
+   useEffect(() => {
+      const controller = new AbortController()
+      setLocalLoading(true)
+      setLocalError('')
+      fetch(`${import.meta.env.BASE_URL}recipes.json`, {
+         signal: controller.signal,
+      })
+         .then((response) => {
+            if (!response.ok) throw new Error('Catalogue indisponible')
+            return response.json()
+         })
+         .then(validateRecipes)
+         .then(setRecipes)
+         .catch((error) => {
+            if (error.name !== 'AbortError')
+               setLocalError(
+                  'Impossible de charger recipes.json. Vérifiez le catalogue puis réessayez.'
+               )
+         })
+         .finally(() => {
+            if (!controller.signal.aborted) setLocalLoading(false)
+         })
+      return () => controller.abort()
+   }, [reload])
 
-      const requestId = ++requestIdRef.current
-      setLoading(true)
-      setError('')
-      setHasSearched(true)
-
-      try {
-         const response = await fetch(
-            `${COCKTAIL_DB_SEARCH}${encodeURIComponent(query)}`
-         )
-
-         if (!response.ok) {
-            throw new Error(
-               `Request failed with status code: ${response.status}`
-            )
-         }
-         const data = await response.json()
-         if (requestId !== requestIdRef.current) return
-
-         const drinks = data.drinks
-         if (!drinks || drinks.length === 0) {
-            setError(
-               'Aucun cocktail trouvé pour ces termes. Essayez un autre nom.'
-            )
-            setCocktailData([])
-         } else {
-            setCocktailData(drinks.map(mapDrink))
-         }
-      } catch (err) {
-         if (requestId !== requestIdRef.current) return
-         console.error(err)
-         setError('Une erreur est survenue. Réessayez dans un instant.')
-         setCocktailData([])
-      } finally {
-         if (requestId === requestIdRef.current) {
-            setLoading(false)
-         }
+   useEffect(() => {
+      const update = () => setOnline(navigator.onLine)
+      window.addEventListener('online', update)
+      window.addEventListener('offline', update)
+      return () => {
+         window.removeEventListener('online', update)
+         window.removeEventListener('offline', update)
       }
    }, [])
 
    useEffect(() => {
-      const handle = window.setTimeout(() => {
-         searchCocktails(cocktail)
-      }, DEBOUNCE_MS)
-      return () => window.clearTimeout(handle)
-   }, [cocktail, searchCocktails])
+      const timer = window.setTimeout(() => setDebounced(query), 350)
+      return () => window.clearTimeout(timer)
+   }, [query])
 
-   const onSubmit = (e) => {
-      e.preventDefault()
-      searchCocktails(cocktail)
+   useEffect(() => {
+      const controller = new AbortController()
+      setApiData([])
+      setApiError('')
+      setApiLoading(false)
+      // Immediately cancel old results while a new query is being debounced.
+      if (tab !== 'api' || !online || !debounced.trim() || query !== debounced)
+         return
+      setApiLoading(true)
+      fetch(
+         `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodeURIComponent(
+            debounced.trim()
+         )}`,
+         { signal: controller.signal, cache: 'no-store' }
+      )
+         .then((response) => {
+            if (!response.ok) throw new Error('API indisponible')
+            return response.json()
+         })
+         .then((data) => {
+            if (!controller.signal.aborted)
+               setApiData((data.drinks || []).map(mapDrink))
+         })
+         .catch((error) => {
+            if (error.name !== 'AbortError')
+               setApiError(
+                  'TheCocktailDB est indisponible. Réessayez ou consultez Maison.'
+               )
+         })
+         .finally(() => {
+            if (!controller.signal.aborted) setApiLoading(false)
+         })
+      return () => controller.abort()
+   }, [tab, online, debounced, query, reload])
+
+   useEffect(() => {
+      setRandom(null)
+   }, [tab, query, spirit, glass, available, favoritesOnly])
+
+   const pool = useMemo(() => localPool(recipes, tab), [recipes, tab])
+   const options = (field) =>
+      [...new Set(pool.map((recipe) => recipe[field]).filter(Boolean))].sort(
+         (a, b) => a.localeCompare(b, 'fr')
+      )
+   const ingredientOptions = useMemo(() => {
+      const names = new Map()
+      localPool(recipes, 'maison')
+         .flatMap((recipe) => recipe.ingredients)
+         .forEach((item) => {
+            const name = ingredientName(item)
+            if (name) names.set(normalize(name), name)
+         })
+      return [...names.values()].sort((a, b) => a.localeCompare(b, 'fr'))
+   }, [recipes])
+   const favoriteKeys = new Set(favorites.map(recipeKey))
+   const localResults = filterRecipes(pool, {
+      query: debounced,
+      spirit,
+      glass,
+      available,
+   })
+   const apiResults = favoritesOnly
+      ? filterRecipes(
+           favorites.filter((recipe) => recipe.source === 'api'),
+           { query: debounced }
+        )
+      : apiData
+   const results = (
+      tab === 'api' ? (online ? apiResults : []) : localResults
+   ).filter((recipe) => !favoritesOnly || favoriteKeys.has(recipeKey(recipe)))
+   // Random always uses the local pool, including when the API tab is selected.
+   const randomPool = filterRecipes(pool, { spirit, glass, available }).filter(
+      (recipe) => !favoritesOnly || favoriteKeys.has(recipeKey(recipe))
+   )
+   const visible = random ? [random] : results
+   const loading =
+      tab === 'api'
+         ? apiLoading || (online && query !== debounced)
+         : localLoading
+
+   const changeTab = (next) => {
+      setTab(next)
+      setSpirit('')
+      setGlass('')
+      setAvailable([])
+      setRandom(null)
+   }
+   const toggleFavorite = (recipe) => {
+      const next = favoriteKeys.has(recipeKey(recipe))
+         ? favorites.filter((item) => recipeKey(item) !== recipeKey(recipe))
+         : [...favorites, recipe]
+      setFavorites(next)
+      try {
+         localStorage.setItem(FAVORITES_KEY, JSON.stringify(next))
+         setStorageError('')
+      } catch {
+         setStorageError(
+            'Favoris conservés pour cette session ; le stockage local est indisponible.'
+         )
+      }
    }
 
    return (
-      <div className="flex w-full flex-col gap-10">
-         <header className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
-            <p className="rounded-full border border-accent/30 bg-wood/60 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-accent-soft shadow-soft">
-               Speakeasy · TheCocktailDB
+      <div className="flex w-full flex-col gap-8">
+         <header className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-accent-soft">
+               Le carnet du bar · Speakeasy
             </p>
-            <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl md:text-6xl">
-               Cocktail{' '}
-               <span className="bg-gradient-to-r from-accent-deep via-accent to-accent-soft bg-clip-text text-transparent">
-                  Search
-               </span>
+            <h1 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-6xl">
+               Cocktails <span className="text-accent">Maison</span>
             </h1>
-            <p className="max-w-md text-base leading-relaxed text-ink-muted sm:text-lg">
-               Derrière la porte : recettes, ingrédients et instructions —
-               ambiance speakeasy, or vieilli.
+            <p className="mt-4 text-ink-muted">
+               Classiques, Martini et soirées au chalet. Votre prochain verre
+               commence ici.
             </p>
          </header>
 
-         <form
-            className="mx-auto w-full max-w-xl"
-            onSubmit={onSubmit}
-            role="search"
+         <div
+            className="flex flex-wrap justify-center gap-2"
+            role="group"
+            aria-label="Catalogue de recettes"
          >
+            {tabs.map(([value, label]) => (
+               <Button
+                  key={value}
+                  variant={tab === value ? 'primary' : 'outline'}
+                  aria-pressed={tab === value}
+                  onClick={() => changeTab(value)}
+               >
+                  {label}
+               </Button>
+            ))}
+         </div>
+         {!online && (
+            <p role="status" className="text-center text-sm text-accent-soft">
+               Hors ligne · Maison et Semaine ski restent disponibles après une
+               première visite. L’API nécessite Internet.
+            </p>
+         )}
+
+         <div role="search" className="mx-auto w-full max-w-xl">
             <label htmlFor="cocktail-query" className="sr-only">
-               Search for a cocktail
+               Nom du cocktail
             </label>
             <div className="relative">
                <FiSearch
-                  className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-accent/70"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-accent"
                   aria-hidden
                />
                <Input
                   id="cocktail-query"
                   type="search"
-                  value={cocktail}
-                  onChange={(e) => setCocktail(e.target.value)}
-                  placeholder="Tapez un nom… Margarita, Mojito, Negroni"
-                  className="pl-10 pr-11"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Tapez un nom… Negroni, Martini"
+                  className="pl-11"
                   autoComplete="off"
-                  aria-busy={loading}
+                  disabled={tab === 'api' && !online}
                />
-               {loading ? (
-                  <FiLoader
-                     className="absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-accent"
-                     aria-hidden
-                  />
-               ) : null}
             </div>
             <p className="mt-2 text-center text-xs text-ink-faint">
-               Recherche automatique · Entrée optionnelle
+               Recherche automatique · 350 ms
             </p>
-         </form>
+         </div>
 
-         {error ? (
-            <div
-               role="status"
-               className="mx-auto max-w-md rounded-xl border border-accent/20 bg-wood/70 px-4 py-3 text-center text-sm text-accent-soft"
+         {tab !== 'api' && (
+            <section className="glass-panel p-5" aria-label="Filtres du bar">
+               <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                     ['Spiritueux', spirit, setSpirit, 'spirit'],
+                     ['Verre', glass, setGlass, 'glass'],
+                  ].map(([label, value, setValue, field]) => (
+                     <label key={field} className="text-sm text-ink-muted">
+                        {label}
+                        <select
+                           aria-label={label}
+                           className="mt-2 w-full rounded-xl border border-accent/20 bg-canvas-elev p-3 text-ink"
+                           value={value}
+                           onChange={(event) => setValue(event.target.value)}
+                        >
+                           <option value="">Tous</option>
+                           {options(field).map((option) => (
+                              <option key={option}>{option}</option>
+                           ))}
+                        </select>
+                     </label>
+                  ))}
+               </div>
+               <details className="mt-5">
+                  <summary className="cursor-pointer text-sm text-accent-soft">
+                     J’ai… {available.length > 0 && `(${available.length})`}
+                  </summary>
+                  <p className="my-3 text-xs text-ink-muted">
+                     Ingrédients du carnet Maison. Tous les ingrédients cochés
+                     doivent figurer dans la recette (correspondance partielle).
+                  </p>
+                  <div className="flex max-h-56 flex-wrap gap-2 overflow-y-auto">
+                     {ingredientOptions.map((name) => (
+                        <label
+                           key={name}
+                           className="flex cursor-pointer items-center gap-2 rounded-lg border border-accent/20 px-3 py-2 text-sm"
+                        >
+                           <input
+                              type="checkbox"
+                              className="accent-amber-500"
+                              checked={available.includes(name)}
+                              onChange={(event) =>
+                                 setAvailable(
+                                    event.target.checked
+                                       ? [...available, name]
+                                       : available.filter(
+                                            (item) => item !== name
+                                         )
+                                 )
+                              }
+                           />
+                           {name}
+                        </label>
+                     ))}
+                  </div>
+               </details>
+               {(spirit || glass || available.length > 0) && (
+                  <Button
+                     variant="ghost"
+                     className="mt-3"
+                     onClick={() => {
+                        setSpirit('')
+                        setGlass('')
+                        setAvailable([])
+                     }}
+                  >
+                     Effacer les filtres
+                  </Button>
+               )}
+            </section>
+         )}
+
+         <div className="flex flex-wrap items-center justify-center gap-3">
+            <Button
+               variant="outline"
+               disabled={!randomPool.length}
+               onClick={() => {
+                  const candidates = randomPool.filter(
+                     (recipe) =>
+                        recipeKey(recipe) !== (random && recipeKey(random))
+                  )
+                  const choices = candidates.length ? candidates : randomPool
+                  setRandom(choices[Math.floor(Math.random() * choices.length)])
+               }}
             >
-               {error}
+               <FiShuffle aria-hidden />
+               Au hasard · {tab === 'ski' ? 'Ski' : 'Maison'}
+            </Button>
+            <Button
+               variant={favoritesOnly ? 'primary' : 'outline'}
+               aria-pressed={favoritesOnly}
+               onClick={() => setFavoritesOnly(!favoritesOnly)}
+            >
+               <FiHeart aria-hidden />
+               Favoris ({favorites.length})
+            </Button>
+            {random && (
+               <Button variant="ghost" onClick={() => setRandom(null)}>
+                  Voir les résultats
+               </Button>
+            )}
+         </div>
+         {storageError && (
+            <p role="status" className="text-center text-sm text-accent-soft">
+               {storageError}
+            </p>
+         )}
+         {(tab === 'api' ? apiError : localError) && (
+            <div role="alert" className="text-center text-accent-soft">
+               <p>{tab === 'api' ? apiError : localError}</p>
+               <Button variant="ghost" onClick={() => setReload(reload + 1)}>
+                  Réessayer
+               </Button>
             </div>
-         ) : null}
-
-         {loading && cocktailData.length === 0 ? (
+         )}
+         <p
+            role="status"
+            aria-live="polite"
+            className="text-center text-sm text-ink-muted"
+         >
+            {loading
+               ? 'Le bar prépare les recettes…'
+               : random
+               ? 'La suggestion du bar'
+               : `${visible.length} recette${visible.length === 1 ? '' : 's'}`}
+         </p>
+         {visible.length > 0 ? (
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-               {[0, 1, 2].map((i) => (
-                  <div
-                     key={i}
-                     className="glass-panel h-80 animate-pulse-soft"
-                     style={{ animationDelay: `${i * 120}ms` }}
-                  />
-               ))}
-            </div>
-         ) : null}
-
-         {cocktailData.length > 0 ? (
-            <div
-               className={`grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 ${
-                  loading ? 'opacity-50' : ''
-               }`}
-            >
-               {cocktailData.map((item, index) => (
+               {visible.map((recipe) => (
                   <CocktailCard
-                     key={item.id}
-                     cocktail={item}
-                     style={{ animationDelay: `${Math.min(index, 8) * 60}ms` }}
+                     key={recipeKey(recipe)}
+                     cocktail={recipe}
+                     favorite={favoriteKeys.has(recipeKey(recipe))}
+                     onFavorite={toggleFavorite}
                   />
                ))}
             </div>
-         ) : null}
-
-         {!loading && hasSearched && cocktailData.length === 0 && !error ? (
-            <p className="text-center text-ink-muted">Aucun résultat.</p>
-         ) : null}
-
-         {!loading && !hasSearched ? (
-            <div className="speakeasy-empty mx-auto w-full max-w-lg animate-fade-up">
-               <div
-                  className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-accent/35 bg-canvas-elev/80 text-3xl shadow-glow animate-lamp-flicker"
-                  aria-hidden
-               >
-                  🥃
+         ) : (
+            !loading && (
+               <div className="speakeasy-empty mx-auto w-full max-w-lg">
+                  <h2 className="font-display text-2xl">
+                     {tab === 'api' && !debounced.trim()
+                        ? 'Ouvrez le carnet du monde'
+                        : 'Aucune recette à servir'}
+                  </h2>
+                  <p className="mt-3 text-sm text-ink-muted">
+                     {tab === 'api'
+                        ? online
+                           ? 'Tapez un nom pour chercher dans TheCocktailDB.'
+                           : 'Choisissez Maison ou Semaine ski pour consulter le carnet hors ligne.'
+                        : 'Modifiez la recherche, les filtres ou ajoutez des favoris dans ce catalogue.'}
+                  </p>
                </div>
-               <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-                  Quiet night. Soft jazz.
-               </h2>
-               <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-muted sm:text-base">
-                  Tapez un cocktail pour lever le rideau — cartes or &amp;
-                  velours avec image, nom, ingrédients et instructions.
-               </p>
-               <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-[11px] uppercase tracking-[0.18em] text-accent/80">
-                  <span>Ambre</span>
-                  <span className="text-ink-faint" aria-hidden>
-                     ·
-                  </span>
-                  <span>Bois</span>
-                  <span className="text-ink-faint" aria-hidden>
-                     ·
-                  </span>
-                  <span>Velours</span>
-               </div>
-            </div>
-         ) : null}
+            )
+         )}
       </div>
    )
 }
