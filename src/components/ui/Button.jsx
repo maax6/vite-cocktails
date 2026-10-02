@@ -11,11 +11,11 @@ export function Button({
 
   const variants = {
     primary:
-      'bg-accent text-canvas shadow-glow hover:bg-accent-soft hover:shadow-[0_0_48px_-8px_rgba(232,168,124,0.5)] active:scale-[0.98]',
+      'bg-accent text-canvas shadow-glow hover:bg-accent-soft hover:shadow-[0_0_48px_-8px_rgba(212,160,86,0.55)] active:scale-[0.98]',
     ghost:
       'bg-transparent text-ink-muted hover:bg-glass-hover hover:text-ink border border-transparent hover:border-glass-border',
     outline:
-      'border border-glass-border bg-glass-fill text-ink hover:bg-glass-hover hover:border-accent/30',
+      'border border-glass-border bg-glass-fill text-ink hover:bg-glass-hover hover:border-accent/40',
   }
 
   return (

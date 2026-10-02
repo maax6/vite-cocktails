@@ -9,23 +9,74 @@
   }
 
   body {
-    @apply min-h-screen bg-canvas text-ink font-sans;
-    background-image: theme('backgroundImage.radial-glow'),
-      theme('backgroundImage.mesh');
+    @apply relative min-h-screen bg-canvas text-ink font-sans;
+    background-image: theme('backgroundImage.speakeasy');
     background-attachment: fixed;
+    background-color: #070504;
+  }
+
+  /* Film grain / paper noise — CSS only, no asset */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    mix-blend-mode: overlay;
+  }
+
+  /* Soft vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 40;
+    background-image: theme('backgroundImage.vignette');
   }
 
   #root {
-    @apply min-h-screen w-full;
+    @apply relative z-[45] min-h-screen w-full;
   }
 
   ::selection {
-    @apply bg-accent/30 text-ink;
+    @apply bg-accent/35 text-ink;
   }
 }
 
 @layer components {
   .glass-panel {
     @apply rounded-2xl border border-glass-border bg-glass-fill backdrop-blur-xl shadow-card;
+    background-image: linear-gradient(
+      165deg,
+      rgba(212, 160, 86, 0.06) 0%,
+      transparent 42%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+  }
+
+  .speakeasy-empty {
+    @apply relative overflow-hidden rounded-3xl border border-accent/25 px-8 py-12 text-center shadow-lamp sm:px-12 sm:py-14;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 160, 86, 0.14), transparent 55%),
+      linear-gradient(160deg, rgba(42, 26, 18, 0.95) 0%, rgba(12, 8, 6, 0.98) 55%, rgba(28, 16, 20, 0.92) 100%);
+    box-shadow:
+      0 20px 50px -20px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 rgba(232, 196, 138, 0.12),
+      0 0 0 1px rgba(212, 160, 86, 0.12),
+      0 0 60px -20px rgba(212, 160, 86, 0.25);
+  }
+
+  .speakeasy-empty::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 1.35rem;
+    border: 1px solid rgba(212, 160, 86, 0.12);
+    pointer-events: none;
   }
 }
