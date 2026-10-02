@@ -3,6 +3,7 @@ import { FiSearch, FiShuffle, FiHeart } from 'react-icons/fi'
 import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { CocktailCard } from './CocktailCard'
+import { SkiGuide } from './SkiGuide'
 import {
    filterRecipes,
    ingredientName,
@@ -44,6 +45,7 @@ function readFavorites() {
 
 export function CocktailSearch() {
    const [tab, setTab] = useState('api')
+   const isSki = tab === 'ski'
    const [query, setQuery] = useState('')
    const [debounced, setDebounced] = useState('')
    const [recipes, setRecipes] = useState([])
@@ -165,12 +167,10 @@ export function CocktailSearch() {
       return [...names.values()].sort((a, b) => a.localeCompare(b, 'fr'))
    }, [recipes])
    const favoriteKeys = new Set(favorites.map(recipeKey))
-   const localResults = filterRecipes(pool, {
-      query: debounced,
-      spirit,
-      glass,
-      available,
-   })
+   // The ski notebook always shows the entire batch, regardless of search or favorites.
+   const localResults = isSki
+      ? pool
+      : filterRecipes(pool, { query: debounced, spirit, glass, available })
    const apiResults = favoritesOnly
       ? filterRecipes(
            favorites.filter((recipe) => recipe.source === 'api'),
@@ -179,12 +179,15 @@ export function CocktailSearch() {
       : apiData
    const results = (
       tab === 'api' ? (online ? apiResults : []) : localResults
-   ).filter((recipe) => !favoritesOnly || favoriteKeys.has(recipeKey(recipe)))
+   ).filter(
+      (recipe) => isSki || !favoritesOnly || favoriteKeys.has(recipeKey(recipe))
+   )
    // Random always uses the local pool, including when the API tab is selected.
    const randomPool = filterRecipes(pool, { spirit, glass, available }).filter(
       (recipe) => !favoritesOnly || favoriteKeys.has(recipeKey(recipe))
    )
    const suggestion =
+      !isSki &&
       random &&
       randomPool.find((recipe) => recipeKey(recipe) === recipeKey(random))
    const visible = suggestion ? [suggestion] : results
@@ -194,7 +197,9 @@ export function CocktailSearch() {
          ? online && !favoritesOnly && (apiLoading || query !== debounced)
          : localLoading)
    const error = suggestion ? '' : tab === 'api' ? apiError : localError
-   const emptyTitle = favoritesOnly
+   const emptyTitle = isSki
+      ? 'Le carnet ski est vide'
+      : favoritesOnly
       ? 'Aucun favori à servir'
       : tab === 'api' && online && !debounced.trim()
       ? 'Ouvrez le carnet du monde'
@@ -202,6 +207,8 @@ export function CocktailSearch() {
    const emptyMessage =
       tab === 'api' && !online
          ? 'Choisissez Cocktail Classique Maxime ou Semaine ski pour consulter le carnet hors ligne.'
+         : isSki
+         ? 'Les recettes du chalet sont indisponibles. Réessayez de charger le carnet.'
          : favoritesOnly
          ? 'Ajoutez des favoris avec le cœur des recettes, ou modifiez la recherche et les filtres.'
          : tab === 'api'
@@ -270,33 +277,37 @@ export function CocktailSearch() {
             </p>
          )}
 
-         <div role="search" className="mx-auto w-full max-w-xl">
-            <label htmlFor="cocktail-query" className="sr-only">
-               Nom du cocktail
-            </label>
-            <div className="relative">
-               <FiSearch
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-accent"
-                  aria-hidden
-               />
-               <Input
-                  id="cocktail-query"
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Tapez un nom… Negroni, Martini"
-                  className="pl-11"
-                  autoComplete="off"
-                  aria-busy={loading}
-                  disabled={tab === 'api' && !online}
-               />
-            </div>
-            <p className="mt-2 text-center text-xs text-ink-faint">
-               Recherche automatique par nom
-            </p>
-         </div>
+         {isSki && <SkiGuide />}
 
-         {tab !== 'api' && (
+         {!isSki && (
+            <div role="search" className="mx-auto w-full max-w-xl">
+               <label htmlFor="cocktail-query" className="sr-only">
+                  Nom du cocktail
+               </label>
+               <div className="relative">
+                  <FiSearch
+                     className="absolute left-4 top-1/2 -translate-y-1/2 text-accent"
+                     aria-hidden
+                  />
+                  <Input
+                     id="cocktail-query"
+                     type="search"
+                     value={query}
+                     onChange={(event) => setQuery(event.target.value)}
+                     placeholder="Tapez un nom… Negroni, Martini"
+                     className="pl-11"
+                     autoComplete="off"
+                     aria-busy={loading}
+                     disabled={tab === 'api' && !online}
+                  />
+               </div>
+               <p className="mt-2 text-center text-xs text-ink-faint">
+                  Recherche automatique par nom
+               </p>
+            </div>
+         )}
+
+         {tab === 'maison' && (
             <section className="glass-panel p-5" aria-label="Filtres du bar">
                <div className="grid gap-4 sm:grid-cols-2">
                   {[
@@ -324,8 +335,9 @@ export function CocktailSearch() {
                      J’ai… {available.length > 0 && `(${available.length})`}
                   </summary>
                   <p className="my-3 text-xs text-ink-muted">
-                     Ingrédients de Cocktail Classique Maxime. Tous les ingrédients cochés
-                     doivent figurer dans la recette (correspondance partielle).
+                     Ingrédients de Cocktail Classique Maxime. Tous les
+                     ingrédients cochés doivent figurer dans la recette
+                     (correspondance partielle).
                   </p>
                   <div className="flex max-h-56 flex-wrap gap-2 overflow-y-auto">
                      {ingredientOptions.map((name) => (
@@ -368,36 +380,40 @@ export function CocktailSearch() {
             </section>
          )}
 
-         <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button
-               variant="outline"
-               disabled={!randomPool.length}
-               onClick={() => {
-                  const candidates = randomPool.filter(
-                     (recipe) =>
-                        recipeKey(recipe) !== (random && recipeKey(random))
-                  )
-                  const choices = candidates.length ? candidates : randomPool
-                  setRandom(choices[Math.floor(Math.random() * choices.length)])
-               }}
-            >
-               <FiShuffle aria-hidden />
-               Au hasard · {tab === 'ski' ? 'Ski' : 'Cocktail Classique Maxime'}
-            </Button>
-            <Button
-               variant={favoritesOnly ? 'primary' : 'outline'}
-               aria-pressed={favoritesOnly}
-               onClick={() => setFavoritesOnly(!favoritesOnly)}
-            >
-               <FiHeart aria-hidden />
-               Favoris ({favorites.length})
-            </Button>
-            {suggestion && (
-               <Button variant="ghost" onClick={() => setRandom(null)}>
-                  Voir les résultats
+         {!isSki && (
+            <div className="flex flex-wrap items-center justify-center gap-3">
+               <Button
+                  variant="outline"
+                  disabled={!randomPool.length}
+                  onClick={() => {
+                     const candidates = randomPool.filter(
+                        (recipe) =>
+                           recipeKey(recipe) !== (random && recipeKey(random))
+                     )
+                     const choices = candidates.length ? candidates : randomPool
+                     setRandom(
+                        choices[Math.floor(Math.random() * choices.length)]
+                     )
+                  }}
+               >
+                  <FiShuffle aria-hidden />
+                  Au hasard · Cocktail Classique Maxime
                </Button>
-            )}
-         </div>
+               <Button
+                  variant={favoritesOnly ? 'primary' : 'outline'}
+                  aria-pressed={favoritesOnly}
+                  onClick={() => setFavoritesOnly(!favoritesOnly)}
+               >
+                  <FiHeart aria-hidden />
+                  Favoris ({favorites.length})
+               </Button>
+               {suggestion && (
+                  <Button variant="ghost" onClick={() => setRandom(null)}>
+                     Voir les résultats
+                  </Button>
+               )}
+            </div>
+         )}
          {storageError && (
             <p role="status" className="text-center text-sm text-accent-soft">
                {storageError}
@@ -420,7 +436,9 @@ export function CocktailSearch() {
                ? 'Le bar prépare les recettes…'
                : suggestion
                ? 'La suggestion du bar'
-               : `${visible.length} recette${visible.length === 1 ? '' : 's'}`}
+               : `${visible.length} recette${visible.length === 1 ? '' : 's'}${
+                    isSki ? ' pour la semaine ski' : ''
+                 }`}
          </p>
          {visible.length > 0 ? (
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

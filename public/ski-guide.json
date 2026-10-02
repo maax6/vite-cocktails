@@ -1,0 +1,85 @@
+{
+  "title": "Le carnet du chalet",
+  "introduction": "Les courses, quelques gestes simples et six cocktails à partager pendant la semaine ski. Installez-vous, on vous guide.",
+  "shopping": [
+    {
+      "title": "Alcool",
+      "items": [
+        "3 × rhum 70 cl (Plantation Dark ou Bacardi 7)",
+        "1 × tequila 1 L (blanco de qualité)",
+        "1 × bourbon 70 cl (Buffalo Trace ou Maker’s Mark)",
+        "1 × Campari 1 L",
+        "1 × vermouth doux 1 L",
+        "1 petite bouteille de curaçao ou triple sec"
+      ]
+    },
+    {
+      "title": "Jus / liquides",
+      "items": [
+        "20–25 citrons verts (+ 10–15 en garniture)",
+        "Jus d’ananas",
+        "Pack cola 6 bouteilles",
+        "Sirop simple",
+        "1–2 L soda water",
+        "Sirop de gingembre ~450 ml",
+        "Grenadine ~450 ml",
+        "Angostura bitters"
+      ]
+    },
+    {
+      "title": "Garnitures",
+      "items": [
+        "3–4 oranges",
+        "Sel",
+        "2–3 sacs de glaçons de 2 kg (sur place)"
+      ]
+    }
+  ],
+  "advancePurchases": {
+    "title": "À acheter à l’avance — Lyon / ville",
+    "text": "Campari, vermouth doux, curaçao / triple sec, Plantation Dark (ou un rhum ambré correct), Angostura et sirop de gingembre se trouvent mal en station. Achetez-les à l’avance, à Lyon ou en ville.",
+    "ice": "Pour les glaçons, un achat sur place convient très bien."
+  },
+  "beginnerGuide": {
+    "introduction": "Pas besoin d’être cocktailer ou cocktailère : préparez vos ingrédients et vos verres, puis suivez la recette tranquillement.",
+    "freshProducts": {
+      "title": "Produits frais",
+      "text": "Pressez du citron / lime frais. Pour les cocktails acidulés, évitez le jus en brique : le jus frais fait toute la différence."
+    },
+    "ice": {
+      "title": "Glace",
+      "text": "Un gros glaçon ou des cubes pour stir et build ; de la glace pilée (crushed ice) pour Dark & Stormy et Jungle Bird. Mettez beaucoup de glace : le verre reste froid et la dilution est plus maîtrisée."
+    },
+    "methods": [
+      {
+        "name": "Build",
+        "description": "Versez directement les ingrédients dans le verre sur glace.",
+        "cocktails": "Cuba Libre, Batanga"
+      },
+      {
+        "name": "Stir",
+        "description": "Remuez dans un mixing glass avec de la glace, puis filtrez au strainer dans le verre.",
+        "cocktails": "Boulevardier"
+      },
+      {
+        "name": "Shake",
+        "description": "Secouez les ingrédients dans un shaker avec de la glace."
+      },
+      {
+        "name": "Strain / Fine strain",
+        "description": "Filtrez au strainer. Pour un fine strain, ajoutez une passoire fine pour retirer les éclats de glace et la pulpe.",
+        "cocktails": "El Presidente, Jungle Bird"
+      },
+      {
+        "name": "Swizzle",
+        "description": "Faites tourner un bâton ou une cuillère dans la glace pilée pour mélanger et refroidir.",
+        "cocktails": "Dark & Stormy"
+      },
+      {
+        "name": "Rim sel",
+        "description": "Humidifiez le bord du verre avec un quartier de citron vert, puis trempez-le dans une petite assiette de sel.",
+        "cocktails": "Batanga"
+      }
+    ]
+  }
+}
