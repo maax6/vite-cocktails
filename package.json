@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/fraunces": "^5.3.0",
     "@fontsource/smooch-sans": "^4.5.9",
     "@fontsource/sora": "^4.5.12",
     "@fontsource/unifont": "^4.5.5",
@@ -26,7 +29,8 @@
     "autoprefixer": "^10.6.1",
     "postcss": "^8.5.28",
     "tailwindcss": "3",
-    "vite": "^4.1.0"
+    "vite": "^4.1.0",
+    "vite-plugin-pwa": "0.20.5"
   },
   "packageManager": "pnpm@9.15.9",
   "engines": {
