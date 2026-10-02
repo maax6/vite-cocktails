@@ -1,13 +1,28 @@
-$ npm install i -g pnpm 
-$ pnpm install
- [Create you api key](https://api-ninjas.com/register)
- Create a .env file at the root of the project
- then paste your API key as value of NINJA_KEY such as :
-//example//
- VITE_NINJA_KEY="cEcGvbObIcxHCuighiuGuigyuifg166"
-//example//
+# vite-cocktails
 
-That's all
-$ pnpm run dev 
-Visit localhost port 5173.
-🍸🍹🍺🍻 Get your recipes 🥂🥃🍾🍷🥤 
+App Vite + React pour chercher des recettes de cocktails via [TheCocktailDB](https://www.thecocktaildb.com/) (API gratuite, **aucune clé requise**).
+
+## Setup
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+Ouvre [http://localhost:5173](http://localhost:5173).
+
+## Scripts
+
+| Commande | Description |
+| --- | --- |
+| `pnpm run dev` | Dev server |
+| `pnpm run build` | Build production |
+| `pnpm run preview` | Preview du build |
+
+## API
+
+Recherche : `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=QUERY`
+
+Pas de fichier `.env` nécessaire.
+
+🍸🍹🍺🍻 Get your recipes 🥂🥃🍾🍷🥤
