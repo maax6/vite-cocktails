@@ -1,9 +1,12 @@
 import { CocktailSearch } from '../../components/CocktailSearch/CocktailSearch'
-export function Home () {
+
+export function Home() {
    return (
-      <div className="home">
+      <div className="home relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
          <CocktailSearch />
+         <footer className="mt-auto pt-16 text-center text-xs text-ink-faint">
+            Données via TheCocktailDB · Vite + React
+         </footer>
       </div>
    )
 }
-
