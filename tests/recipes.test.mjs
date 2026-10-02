@@ -18,7 +18,7 @@ const recipes = validateRecipes(
    JSON.parse(readFileSync(new URL('../public/recipes.json', import.meta.url)))
 )
 
-test('catalogue valide ; le ski est exclu de Maison et réservé au ski', () => {
+test('catalogue valide ; le ski est exclu de Cocktail Classique Maxime et réservé au ski', () => {
    validateRecipes(recipes)
    assert.ok(recipes.length > 0)
    assert.ok(localPool(recipes, 'maison').length > 0)

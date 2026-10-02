@@ -15,8 +15,8 @@ import {
 
 const FAVORITES_KEY = 'speakeasy:favorites:v1'
 const tabs = [
-   ['maison', 'Maison'],
    ['api', 'API'],
+   ['maison', 'Cocktail Classique Maxime'],
    ['ski', 'Semaine ski'],
 ]
 
@@ -43,7 +43,7 @@ function readFavorites() {
 }
 
 export function CocktailSearch() {
-   const [tab, setTab] = useState('maison')
+   const [tab, setTab] = useState('api')
    const [query, setQuery] = useState('')
    const [debounced, setDebounced] = useState('')
    const [recipes, setRecipes] = useState([])
@@ -136,7 +136,7 @@ export function CocktailSearch() {
          .catch(() => {
             if (!controller.signal.aborted)
                setApiError(
-                  'TheCocktailDB est indisponible. Réessayez ou consultez Maison.'
+                  'TheCocktailDB est indisponible. Réessayez ou consultez Cocktail Classique Maxime.'
                )
          })
          .finally(() => {
@@ -201,7 +201,7 @@ export function CocktailSearch() {
       : 'Aucune recette à servir'
    const emptyMessage =
       tab === 'api' && !online
-         ? 'Choisissez Maison ou Semaine ski pour consulter le carnet hors ligne.'
+         ? 'Choisissez Cocktail Classique Maxime ou Semaine ski pour consulter le carnet hors ligne.'
          : favoritesOnly
          ? 'Ajoutez des favoris avec le cœur des recettes, ou modifiez la recherche et les filtres.'
          : tab === 'api'
@@ -239,7 +239,7 @@ export function CocktailSearch() {
                Le carnet du bar · Speakeasy
             </p>
             <h1 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-6xl">
-               Cocktails <span className="text-accent">Maison</span>
+               Le bar de <span className="text-accent">Maxime</span>
             </h1>
             <p className="mt-4 text-ink-muted">
                Classiques, Martini et soirées au chalet. Votre prochain verre
@@ -265,8 +265,8 @@ export function CocktailSearch() {
          </div>
          {!online && (
             <p role="status" className="text-center text-sm text-accent-soft">
-               Hors ligne · Maison et Semaine ski restent disponibles après une
-               première visite. L’API nécessite Internet.
+               Hors ligne · Cocktail Classique Maxime et Semaine ski restent
+               disponibles après une première visite. L’API nécessite Internet.
             </p>
          )}
 
@@ -324,7 +324,7 @@ export function CocktailSearch() {
                      J’ai… {available.length > 0 && `(${available.length})`}
                   </summary>
                   <p className="my-3 text-xs text-ink-muted">
-                     Ingrédients du carnet Maison. Tous les ingrédients cochés
+                     Ingrédients de Cocktail Classique Maxime. Tous les ingrédients cochés
                      doivent figurer dans la recette (correspondance partielle).
                   </p>
                   <div className="flex max-h-56 flex-wrap gap-2 overflow-y-auto">
@@ -382,7 +382,7 @@ export function CocktailSearch() {
                }}
             >
                <FiShuffle aria-hidden />
-               Au hasard · {tab === 'ski' ? 'Ski' : 'Maison'}
+               Au hasard · {tab === 'ski' ? 'Ski' : 'Cocktail Classique Maxime'}
             </Button>
             <Button
                variant={favoritesOnly ? 'primary' : 'outline'}

@@ -1,4 +1,4 @@
-# Cocktails Maison · Speakeasy
+# Le bar de Maxime · Speakeasy
 
 Vite + React 18 + Tailwind. Node.js 20 minimum (dépendances PWA). Carnet local, recherche automatique (350 ms), cartes ambre/laiton, sans bouton de recherche.
 
@@ -12,12 +12,12 @@ pnpm test
 
 ## Le bar
 
-- **Maison** (par défaut) : classiques et Martini, hors `season: "ski"`.
-- **API** : recherche par nom dans [TheCocktailDB](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini), sans clé. Les 15 ingrédients/doses, la méthode, le verre et la photo sont conservés. Garniture non fournie par l’API : « Non renseignée ». Requêtes annulées dès que la recherche change.
+- **API** (par défaut) : recherche par nom dans [TheCocktailDB](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini), sans clé. Les 15 ingrédients/doses, la méthode, le verre et la photo sont conservés. Garniture non fournie par l’API : « Non renseignée ». Requêtes annulées dès que la recherche change.
+- **Cocktail Classique Maxime** : classiques et Martini, hors `season: "ski"`. La valeur interne `maison` et les identifiants restent stables.
 - **Semaine ski** : uniquement les recettes locales `season: "ski"`.
-- Filtres locaux spiritueux et verre ; « J’ai… » propose les ingrédients du pool Maison hors ski. Une recette doit contenir **tous** les ingrédients cochés, avec correspondance partielle insensible à la casse et aux accents. Ces ingrédients peuvent aussi filtrer le ski.
+- Filtres locaux spiritueux et verre ; « J’ai… » propose les ingrédients du pool Cocktail Classique Maxime hors ski. Une recette doit contenir **tous** les ingrédients cochés, avec correspondance partielle insensible à la casse et aux accents. Ces ingrédients peuvent aussi filtrer le ski.
 - Fiche directement visible sur chaque carte : doses en gros, méthode complète, verre, garniture. Les mesures API sont affichées telles quelles (aucune conversion approximative en oz).
-- **Au hasard** : pool Maison hors ski, même dans l’onglet API ; pool ski en mode ski. Respecte les filtres du bar et le mode favoris, sans restriction par nom. « Voir les résultats » quitte la suggestion.
+- **Au hasard** : pool Cocktail Classique Maxime hors ski, même dans l’onglet API ; pool ski en mode ski. Respecte les filtres du bar et le mode favoris, sans restriction par nom. « Voir les résultats » quitte la suggestion.
 - **Favoris** : cœur sur chaque carte, enregistré dans `localStorage` (`speakeasy:favorites:v1`). Le bouton Favoris filtre le catalogue courant. Dans API, les recettes enregistrées se consultent sans requête réseau ; elles nécessitent une connexion comme le reste de l’onglet API. Les entrées invalides du stockage sont ignorées sans perdre les autres favoris.
 
 ## Catalogue / export
@@ -53,6 +53,6 @@ Si vous ajoutez `scripts/export-notion-recipes.mjs`, transmettez le secret uniqu
 
 ## PWA et hors ligne
 
-Le plugin [vite-plugin-pwa](https://vite-pwa-org.netlify.app/guide/static-assets.html) génère le manifeste et le service worker, avec précache de `recipes.json`, HTML, JS, CSS, icônes et polices locales. Après une première visite en ligne et la fin de l’installation du service worker, **Maison et Semaine ski fonctionnent hors ligne**, avec filtres, favoris et hasard. Aucune requête TheCocktailDB n’est mise en cache ; l’API est exclusivement en ligne.
+Le plugin [vite-plugin-pwa](https://vite-pwa-org.netlify.app/guide/static-assets.html) génère le manifeste et le service worker, avec précache de `recipes.json`, HTML, JS, CSS, icônes et polices locales. Après une première visite en ligne et la fin de l’installation du service worker, **Cocktail Classique Maxime et Semaine ski fonctionnent hors ligne**, avec filtres, favoris et hasard. Aucune requête TheCocktailDB n’est mise en cache ; l’API est exclusivement en ligne.
 
 Testez le hors ligne avec `pnpm build` puis `pnpm preview` sur localhost (ou en production HTTPS), pas avec le serveur dev. Ouvrez la page en ligne, attendez le service worker actif, rechargez, puis passez hors ligne et rechargez encore. Le navigateur propose l’installation PWA selon son support ; sur iOS, utilisez « Ajouter à l’écran d’accueil ». Les recettes mises à jour sont incluses au prochain build et renouvelées avec le service worker.

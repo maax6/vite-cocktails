@@ -18,7 +18,7 @@ export function CocktailCard({ cocktail, favorite, onFavorite, style }) {
                         ? 'TheCocktailDB'
                         : season === 'ski'
                         ? 'Semaine ski'
-                        : 'Maison'}
+                        : 'Cocktail Classique Maxime'}
                   </Badge>
                   <h2 className="mt-3 break-words font-display text-2xl font-semibold text-ink">
                      {name}

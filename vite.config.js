@@ -9,10 +9,10 @@ export default defineConfig({
          registerType: 'autoUpdate',
          includeAssets: ['recipes.json', 'favicon.ico', 'apple-touch-icon.png'],
          manifest: {
-            name: 'Cocktails Maison · Speakeasy',
+            name: 'Le bar de Maxime · Speakeasy',
             short_name: 'Cocktails',
             description:
-               'Le carnet Maison et Semaine ski, disponible hors ligne.',
+               'Cocktail Classique Maxime et Semaine ski, disponibles hors ligne.',
             lang: 'fr',
             theme_color: '#070504',
             background_color: '#070504',
