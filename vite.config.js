@@ -1,9 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { BRAND } from './src/lib/brand.mjs'
+
+const escapeHtml = (value) => value.replace(/[&<>"']/g, (char) => ({
+   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+}[char]))
 
 export default defineConfig({
    plugins: [
+      {
+         name: 'cocktail-brand',
+         transformIndexHtml: (html) => html
+            .replaceAll('__APP_NAME__', escapeHtml(BRAND.name))
+            .replaceAll('__APP_DESCRIPTION__', escapeHtml(BRAND.description))
+            .replaceAll('__APP_URL__', escapeHtml(BRAND.url)),
+      },
       react(),
       VitePWA({
          registerType: 'autoUpdate',
@@ -14,10 +26,9 @@ export default defineConfig({
             'apple-touch-icon.png',
          ],
          manifest: {
-            name: 'Le bar de Maxime · Speakeasy',
-            short_name: 'Cocktails',
-            description:
-               'Cocktail Classique Maxime et Semaine ski, disponibles hors ligne.',
+            name: BRAND.name,
+            short_name: BRAND.name,
+            description: BRAND.description,
             lang: 'fr',
             theme_color: '#070504',
             background_color: '#070504',
