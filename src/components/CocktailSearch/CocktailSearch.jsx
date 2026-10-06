@@ -3,6 +3,7 @@ import { FiSearch, FiShuffle, FiHeart } from 'react-icons/fi'
 import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { CocktailCard } from './CocktailCard'
+import { BRAND } from '../../lib/brand.mjs'
 import { SkiGuide } from './SkiGuide'
 import {
    filterRecipes,
@@ -246,7 +247,7 @@ export function CocktailSearch() {
                Le carnet du bar · Speakeasy
             </p>
             <h1 className="mt-4 font-display text-4xl font-semibold text-ink sm:text-6xl">
-               Le bar de <span className="text-accent">Maxime</span>
+               {BRAND.name}
             </h1>
             <p className="mt-4 text-ink-muted">
                Classiques, Martini et soirées au chalet. Votre prochain verre
