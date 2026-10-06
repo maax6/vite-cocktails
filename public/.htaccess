@@ -1,0 +1,12 @@
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Let the browser detect fresh releases and service worker versions.
+    <FilesMatch "^(index\.html|sw\.js|registerSW\.js|manifest\.webmanifest|recipes\.json|ski-guide\.json)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
